@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Riva Bank — Where Your Money Flows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ── Variables ───────────────────────────── */
+:root {
+  --cream:    #FAF8F5;
+  --cream2:   #F3EFE9;
+  --cream3:   #EBE6DD;
+  --white:    #FFFFFF;
+  --navy:     #2C4A6E;
+  --navy2:    #1E3554;
+  --navy3:    #152842;
+  --sage:     #6BADA0;
+  --sage2:    #5B9E91;
+  --sage-lt:  #EAF4F2;
+  --sage-md:  #C8E6E2;
+  --gold:     #C9A96E;
+  --gold-lt:  #F7F0E4;
+  --rose:     #C4847A;
+  --charcoal: #2D3142;
+  --mid:      #5A6478;
+  --muted:    #9AA4B4;
+  --border:   #E3DDD4;
+  --font-d:   'DM Serif Display', Georgia, serif;
+  --font-b:   'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nav-h:    105px;
+  --radius:   12px;
+  --shadow:   0 2px 14px rgba(44,74,110,0.08);
+  --shadow-lg:0 8px 36px rgba(44,74,110,0.13);
+}
+
+/* ── Reset ───────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body { background: var(--cream); color: var(--charcoal); font-family: var(--font-b); line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-b); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 4px; }
+
+/* ── Nav ─────────────────────────────────── */
+#main-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(250,248,245,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 10px rgba(44,74,110,0.06);
+}
+.nav-row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 4%;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  color: var(--navy);
+  cursor: pointer;
+  user-select: none;
+}
+.logo .dot { color: var(--sage); }
+.nav-btns { display: flex; align-items: center; gap: 0.6rem; }
+.btn-login {
+  background: none;
+  border: 1.5px solid var(--border);
+  color: var(--navy);
+  padding: 0.42rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-login:hover { border-color: var(--sage); color: var(--sage); }
+.btn-open {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 0.42rem 1.1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-open:hover { background: var(--navy2); }
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--navy);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+.nav-row2 {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 4%;
+}
+.nav-row2::-webkit-scrollbar { display: none; }
+.nav-tab {
+  flex-shrink: 0;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mid);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+.nav-tab:hover { color: var(--navy); }
+.nav-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.5rem 4% 0.8rem;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.mobile-menu.open { display: flex; }
+.mob-tab {
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.65rem 0.7rem;
+  font-size: 0.88rem;
+  color: var(--mid);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.mob-tab:hover, .mob-tab.is-active { background: var(--sage-lt); color: var(--navy); }
+
+/* ── Pages ───────────────────────────────── */
+.page {
+  display: none;
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+}
+.page.is-active { display: block; }
+
+/* ── Sections ────────────────────────────── */
+.sec { padding: 4rem 4%; }
+.bg-white { background: var(--white); }
+.bg-cream { background: var(--cream); }
+.bg-cream2 { background: var(--cream2); }
+.bg-cream3 { background: var(--cream3); }
+.bg-navy { background: var(--navy); }
+.bg-navy3 { background: var(--navy3); }
+
+.sec-lbl {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sage);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.sec-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 0.6rem;
+}
+.sec-sub {
+  color: var(--mid);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 480px;
+}
+.sec-hdr { margin-bottom: 2.5rem; }
+
+/* ── Buttons ─────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--navy); color: #fff;
+  border: none; padding: 0.72rem 1.6rem;
+  border-radius: 6px; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { background: var(--navy2); box-shadow: 0 4px 16px rgba(44,74,110,0.22); }
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: none; border: 1.5px solid var(--border); color: var(--navy);
+  padding: 0.72rem 1.6rem;
+  border-radius: 6px; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.btn-outline:hover { border-color: var(--navy); }
+.btn-sage {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--sage); color: #fff;
+  border: none; padding: 0.72rem 1.6rem;
+  border-radius: 6px; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; transition: background 0.2s;
+}
+.btn-sage:hover { background: var(--sage2); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: none; border: 1.5px solid var(--border); color: var(--navy);
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px; font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--sage); color: var(--sage); }
+.btn-text {
+  background: none; border: none; color: var(--sage);
+  font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;
+  transition: gap 0.2s; padding: 0;
+}
+.btn-text:hover { gap: 0.55rem; }
+
+/* ── Chips ───────────────────────────────── */
+.chip {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 600;
+  padding: 0.2rem 0.7rem; border-radius: 50px;
+}
+.chip-gold { background: var(--gold-lt); color: var(--gold); border: 1px solid rgba(201,169,110,.25); }
+.chip-sage { background: var(--sage-lt); color: var(--sage2); border: 1px solid rgba(107,173,160,.25); }
+.chip-navy { background: rgba(44,74,110,.08); color: var(--navy); border: 1px solid rgba(44,74,110,.15); }
+
+/* ── Divider ─────────────────────────────── */
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ═══════════════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════════════ */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 4% 4rem;
+  background: linear-gradient(150deg, var(--white) 0%, var(--cream) 55%, var(--sage-lt) 100%);
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--sage); font-size: 0.73rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;
+}
+.hero-eyebrow::before { content: ''; width: 18px; height: 1.5px; background: var(--sage); display: inline-block; }
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  line-height: 1.08;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.hero-title em { color: var(--sage); font-style: italic; }
+.hero-sub { color: var(--mid); font-size: 0.95rem; line-height: 1.75; max-width: 450px; margin-bottom: 2rem; }
+.hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.trust-bar {
+  display: flex; gap: 1.8rem; flex-wrap: wrap;
+  border-top: 1px solid var(--border); padding-top: 1.5rem;
+}
+.trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--mid); font-weight: 500; }
+.trust-item i { color: var(--sage); }
+.hero-right { display: flex; flex-direction: column; gap: 1rem; }
+.hcard {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.3rem; box-shadow: var(--shadow);
+}
+.hcard-lbl { font-size: 0.68rem; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+.hcard-val { font-family: var(--font-d); font-size: 1.7rem; color: var(--navy); }
+.hcard-sub { font-size: 0.73rem; color: var(--mid); margin-top: 0.2rem; }
+.hrates { display: flex; gap: 0.8rem; }
+.hrate { flex: 1; background: var(--cream2); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem; text-align: center; }
+.hrate .rv { font-family: var(--font-d); font-size: 1.25rem; color: var(--sage2); }
+.hrate .rl { font-size: 0.68rem; color: var(--mid); margin-top: 0.2rem; }
+.quick-links {
+  display: grid; grid-template-columns: repeat(8, 1fr);
+  gap: 0.8rem; padding: 1.5rem 4%;
+  background: var(--white);
+}
+.ql {
+  display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
+  background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1rem 0.5rem; cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.ql:hover { background: var(--white); box-shadow: var(--shadow); transform: translateY(-2px); }
+.ql i { font-size: 1.2rem; color: var(--sage); }
+.ql span { font-size: 0.73rem; font-weight: 500; color: var(--navy); }
+.highlights {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; padding: 2rem 4%;
+  background: var(--cream2);
+}
+.hl-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+  cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
+}
+.hl-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--sage2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.hl-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.hl-card:hover::after { transform: scaleX(1); }
+.hl-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+.hl-card h4 { font-family: var(--font-d); font-size: 0.98rem; color: var(--navy); margin-bottom: 0.4rem; }
+.hl-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.8rem; }
+.hl-link { font-size: 0.78rem; color: var(--sage); font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; }
+
+/* ═══════════════════════════════════════════
+   PRODUCTS PAGE
+═══════════════════════════════════════════ */
+.pill-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.pill-tab {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.8rem; font-weight: 500;
+  background: var(--cream2); border: 1px solid var(--border);
+  color: var(--mid); border-radius: 50px;
+  cursor: pointer; transition: all 0.2s;
+}
+.pill-tab.is-active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.pill-panel { display: none; }
+.pill-panel.is-active { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.2rem; }
+.prod-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.6rem;
+  cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
+}
+.prod-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--sage2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.prod-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.prod-card:hover::after { transform: scaleX(1); }
+.prod-icon { font-size: 1.5rem; margin-bottom: 0.9rem; }
+.prod-card h3 { font-family: var(--font-d); font-size: 1.02rem; color: var(--navy); margin-bottom: 0.4rem; }
+.prod-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.9rem; }
+
+/* ═══════════════════════════════════════════
+   SERVICES PAGE
+═══════════════════════════════════════════ */
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.svc-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.7rem;
+  cursor: pointer; transition: all 0.25s;
+}
+.svc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--sage-md); }
+.svc-icon { width: 46px; height: 46px; background: var(--sage-lt); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; }
+.svc-card h3 { font-family: var(--font-d); font-size: 0.98rem; color: var(--navy); margin-bottom: 0.4rem; }
+.svc-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.9rem; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+.svc-tag { background: var(--cream2); color: var(--mid); font-size: 0.68rem; padding: 0.18rem 0.55rem; border-radius: 4px; }
+
+/* ═══════════════════════════════════════════
+   CALCULATOR PAGE
+═══════════════════════════════════════════ */
+.tab-strip { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; width: fit-content; margin-bottom: 2rem; }
+.tab-btn {
+  padding: 0.6rem 1.7rem; font-size: 0.83rem; font-weight: 500;
+  background: var(--white); color: var(--mid); border: none; cursor: pointer; transition: all 0.2s;
+}
+.tab-btn.is-active { background: var(--navy); color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.sl-group { margin-bottom: 1.4rem; }
+.sl-group label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 500; color: var(--mid); margin-bottom: 0.55rem; }
+.sl-group label span { color: var(--navy); font-weight: 600; font-size: 0.85rem; }
+input[type="range"] { -webkit-appearance: none; width: 100%; height: 4px; background: var(--border); border-radius: 2px; outline: none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 17px; height: 17px; border-radius: 50%; background: var(--sage); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(107,173,160,0.4); cursor: pointer; }
+input[type="range"]::-moz-range-thumb { width: 17px; height: 17px; border-radius: 50%; background: var(--sage); border: 2px solid #fff; cursor: pointer; }
+.calc-result {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow);
+}
+.emi-big { font-family: var(--font-d); font-size: 2.2rem; color: var(--navy); }
+.emi-lbl { font-size: 0.72rem; color: var(--muted); margin-bottom: 1.2rem; }
+.break-row { display: flex; justify-content: space-between; font-size: 0.83rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.break-row:last-child { border-bottom: none; }
+.break-row .bl { color: var(--mid); }
+.break-row .bv { color: var(--navy); font-weight: 600; }
+.donut-wrap { display: flex; align-items: center; gap: 1.2rem; margin-top: 1.2rem; }
+.donut { position: relative; width: 86px; height: 86px; flex-shrink: 0; }
+.donut svg { transform: rotate(-90deg); display: block; }
+.donut-legend { display: flex; flex-direction: column; gap: 0.5rem; }
+.leg { display: flex; align-items: center; gap: 0.45rem; font-size: 0.73rem; color: var(--mid); }
+.leg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.fd-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { margin-bottom: 0; }
+.field label { display: block; font-size: 0.73rem; font-weight: 600; color: var(--mid); letter-spacing: 0.4px; margin-bottom: 0.4rem; }
+.field input, .field select {
+  width: 100%; background: var(--cream); border: 1.5px solid var(--border);
+  color: var(--charcoal); padding: 0.65rem 0.85rem;
+  border-radius: 8px; font-family: var(--font-b); font-size: 0.87rem; outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.field input:focus, .field select:focus { border-color: var(--sage); background: var(--white); }
+.fd-result { background: var(--sage-lt); border: 1px solid rgba(107,173,160,0.22); border-radius: var(--radius); padding: 1.8rem; }
+.fd-mat { font-family: var(--font-d); font-size: 2rem; color: var(--navy); }
+.fd-rows { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+.fd-row { display: flex; justify-content: space-between; font-size: 0.83rem; }
+.fd-row .fl { color: var(--mid); }
+.fd-row .fv { color: var(--navy); font-weight: 600; }
+
+/* ═══════════════════════════════════════════
+   RATES PAGE
+═══════════════════════════════════════════ */
+.line-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none; }
+.line-tabs::-webkit-scrollbar { display: none; }
+.line-tab {
+  flex-shrink: 0; padding: 0.55rem 1.2rem;
+  font-size: 0.81rem; font-weight: 500;
+  background: none; color: var(--mid); border: none;
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.line-tab.is-active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+.line-panel { display: none; }
+.line-panel.is-active { display: block; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  background: var(--cream2); color: var(--navy); font-size: 0.73rem;
+  font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 0.75rem 1rem; text-align: left; border-bottom: 2px solid var(--border);
+}
+tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--cream); }
+tbody td { padding: 0.72rem 1rem; font-size: 0.83rem; color: var(--mid); }
+tbody td:last-child { color: var(--navy); font-weight: 600; }
+.rate-hi { color: var(--sage2) !important; }
+.tbl-note { font-size: 0.71rem; color: var(--muted); margin-top: 1rem; line-height: 1.5; }
+
+/* ═══════════════════════════════════════════
+   FORM PAGE
+═══════════════════════════════════════════ */
+.form-center { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; padding: 3rem 4%; }
+.form-card {
+  max-width: 530px; width: 100%;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2.3rem; box-shadow: var(--shadow);
+}
+.step-bar { display: flex; align-items: center; margin-bottom: 1.8rem; }
+.s-num {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 600; transition: all 0.3s;
+  background: var(--border); color: var(--muted);
+}
+.s-num.active-step { background: var(--navy); color: #fff; }
+.s-num.done-step { background: var(--sage); color: #fff; }
+.s-line { flex: 1; height: 2px; background: var(--border); transition: background 0.3s; }
+.s-line.done-step { background: var(--sage); }
+.f-step { display: none; }
+.f-step.is-active { display: block; }
+.f-step-t { font-family: var(--font-d); font-size: 1.15rem; color: var(--navy); margin-bottom: 0.25rem; }
+.f-step-s { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.3rem; }
+.fg { margin-bottom: 0.9rem; }
+.fg label { display: block; font-size: 0.73rem; font-weight: 600; color: var(--mid); letter-spacing: 0.4px; margin-bottom: 0.35rem; }
+.fg input, .fg select {
+  width: 100%; background: var(--cream); border: 1.5px solid var(--border);
+  color: var(--charcoal); padding: 0.7rem 0.85rem; border-radius: 8px;
+  font-family: var(--font-b); font-size: 0.87rem; outline: none; transition: border-color 0.2s;
+}
+.fg input:focus, .fg select:focus { border-color: var(--sage); background: var(--white); }
+.fg input::placeholder { color: var(--muted); }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.f-err { color: #c0392b; font-size: 0.7rem; margin-top: 0.22rem; display: none; }
+.f-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.3rem; }
+.btn-back {
+  background: none; border: 1.5px solid var(--border); color: var(--mid);
+  padding: 0.55rem 1.1rem; border-radius: 6px;
+  font-family: var(--font-b); font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-back:hover { border-color: var(--mid); color: var(--charcoal); }
+.success-box { text-align: center; padding: 1rem 0; }
+.success-box .s-ico { font-size: 2.8rem; margin-bottom: 0.8rem; }
+.success-box h3 { font-family: var(--font-d); font-size: 1.3rem; color: var(--navy); margin-bottom: 0.5rem; }
+.success-box p { color: var(--mid); font-size: 0.86rem; line-height: 1.7; }
+.ref-tag { display: inline-block; background: var(--sage-lt); border: 1px solid rgba(107,173,160,0.3); color: var(--sage2); padding: 0.35rem 1.1rem; border-radius: 50px; font-size: 0.76rem; font-weight: 600; letter-spacing: 1px; margin-top: 0.7rem; }
+
+/* ═══════════════════════════════════════════
+   NEO PAGE
+═══════════════════════════════════════════ */
+.neo-hero {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center;
+  padding: 4rem 4%;
+  background: linear-gradient(145deg, var(--navy3) 0%, var(--navy) 55%, #2d5a7a 100%);
+}
+.neo-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(107,173,160,0.15); border: 1px solid rgba(107,173,160,0.3);
+  color: var(--sage); padding: 0.28rem 0.85rem; border-radius: 50px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.1rem;
+}
+.neo-title { font-family: var(--font-d); font-size: clamp(2rem, 4vw, 3rem); color: #fff; line-height: 1.1; margin-bottom: 0.9rem; }
+.neo-title em { color: var(--sage); font-style: italic; }
+.neo-sub { color: rgba(255,255,255,0.58); font-size: 0.93rem; line-height: 1.75; max-width: 440px; margin-bottom: 1.8rem; }
+.neo-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.neo-phone-wrap { display: flex; justify-content: center; align-items: center; position: relative; }
+.phone-frame {
+  width: 200px; height: 390px;
+  background: linear-gradient(160deg, #0f1f33, #0a1525);
+  border-radius: 32px; border: 2px solid rgba(107,173,160,0.3);
+  overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 50px rgba(107,173,160,0.1);
+  position: relative; z-index: 2;
+}
+.phone-screen { padding: 1.1rem; }
+.p-notch { width: 68px; height: 18px; background: #0a1525; border-radius: 0 0 12px 12px; margin: 0 auto 0.9rem; }
+.p-app-name { text-align: center; font-size: 0.58rem; color: rgba(107,173,160,0.8); font-weight: 700; letter-spacing: 2px; margin-bottom: 0.8rem; }
+.p-bal-lbl { font-size: 0.58rem; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; }
+.p-bal { font-family: var(--font-d); font-size: 1.35rem; color: #fff; margin: 0.2rem 0 0.7rem; }
+.p-sec-lbl { font-size: 0.58rem; color: rgba(255,255,255,0.3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+.p-pocket { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 0.55rem 0.7rem; margin-bottom: 0.35rem; }
+.p-pocket-row { display: flex; justify-content: space-between; font-size: 0.6rem; font-family: var(--font-b); margin-bottom: 0.25rem; }
+.p-pocket-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+.p-pocket-fill { height: 100%; border-radius: 2px; }
+.p-badge {
+  position: absolute; background: var(--white); border: 1px solid var(--border);
+  border-radius: 9px; padding: 0.45rem 0.75rem;
+  font-size: 0.68rem; font-family: var(--font-b); font-weight: 600; color: var(--navy);
+  white-space: nowrap; box-shadow: 0 6px 20px rgba(0,0,0,0.14); z-index: 3;
+}
+.p-badge span { color: var(--sage); }
+.pb1 { top: 18%; right: -15%; }
+.pb2 { bottom: 22%; left: -17%; }
+/* Neo sections */
+.neo-why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.nw-card {
+  background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.5rem; cursor: pointer; text-align: center; transition: all 0.25s;
+}
+.nw-card:hover { background: var(--white); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.nw-ico { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+.nw-card h4 { font-family: var(--font-d); font-size: 0.92rem; color: var(--navy); margin-bottom: 0.3rem; }
+.nw-card p { font-size: 0.77rem; color: var(--mid); line-height: 1.6; }
+.nf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+.nf-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.7rem; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
+}
+.nf-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sage), var(--sage2)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.nf-card:hover { box-shadow: var(--shadow-lg); }
+.nf-card:hover::before { transform: scaleX(1); }
+.nf-ico { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.nf-card h3 { font-family: var(--font-d); font-size: 0.98rem; color: var(--navy); margin-bottom: 0.4rem; }
+.nf-card p { font-size: 0.79rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.8rem; }
+.india-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+.india-card {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.4rem; cursor: pointer; transition: all 0.25s;
+}
+.india-card:hover { background: var(--white); box-shadow: var(--shadow); }
+.india-ico { width: 38px; height: 38px; background: var(--sage-lt); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+.india-card h4 { font-family: var(--font-d); font-size: 0.9rem; color: var(--navy); margin-bottom: 0.3rem; }
+.india-card p { font-size: 0.78rem; color: var(--mid); line-height: 1.6; }
+.compare-tbl { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.compare-tbl th { padding: 1rem 1.2rem; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; text-align: left; }
+.compare-tbl th:nth-child(2) { background: var(--cream2); color: var(--mid); }
+.compare-tbl th:nth-child(3) { background: var(--navy); color: #fff; }
+.compare-tbl td { padding: 0.8rem 1.2rem; font-size: 0.82rem; border-bottom: 1px solid var(--border); }
+.compare-tbl tr:last-child td { border-bottom: none; }
+.compare-tbl td:nth-child(2) { background: rgba(242,239,232,0.4); color: var(--mid); }
+.compare-tbl td:nth-child(3) { background: rgba(44,74,110,0.03); color: var(--navy); font-weight: 500; }
+.c-yes { color: var(--sage2) !important; font-weight: 600 !important; }
+.c-no { color: var(--muted) !important; }
+.neo-cta-strip { background: linear-gradient(135deg, var(--navy3), var(--navy)); padding: 3rem 4%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.neo-cta-strip h2 { font-family: var(--font-d); font-size: 1.6rem; color: #fff; }
+.neo-cta-strip p { color: rgba(255,255,255,0.5); font-size: 0.83rem; margin-top: 0.3rem; }
+
+/* ═══════════════════════════════════════════
+   AI INSIGHTS PAGE
+═══════════════════════════════════════════ */
+.ai-hero {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center;
+  padding: 4rem 4%;
+  background: linear-gradient(150deg, #f0ece5 0%, #e8f4f2 55%, #f0ece5 100%);
+}
+.ai-dash {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-lg);
+}
+.ai-dash-title { font-size: 0.68rem; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
+.ai-metrics { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+.ai-metric { flex: 1; background: var(--cream); border-radius: 9px; padding: 0.75rem; text-align: center; }
+.ai-metric .mv { font-family: var(--font-d); font-size: 1.15rem; color: var(--navy); }
+.ai-metric .ml { font-size: 0.63rem; color: var(--muted); margin-top: 0.15rem; }
+.ai-bar-g { margin-bottom: 0.65rem; }
+.ai-bar-lbl { display: flex; justify-content: space-between; font-size: 0.66rem; color: var(--mid); margin-bottom: 0.22rem; }
+.ai-bar-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.ai-bar-fill { height: 100%; border-radius: 3px; }
+.ai-chip { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--gold-lt); border: 1px solid rgba(201,169,110,0.2); color: var(--gold); padding: 0.3rem 0.75rem; border-radius: 50px; font-size: 0.68rem; font-weight: 600; margin-top: 0.75rem; }
+.ai-feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+.ai-feat {
+  background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.7rem; cursor: pointer; transition: all 0.25s;
+}
+.ai-feat:hover { background: var(--white); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.af-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 0.9rem; }
+.af-navy { background: rgba(44,74,110,0.1); }
+.af-sage { background: var(--sage-lt); }
+.af-gold { background: var(--gold-lt); }
+.af-rose { background: rgba(196,132,122,0.1); }
+.ai-feat h3 { font-family: var(--font-d); font-size: 0.98rem; color: var(--navy); margin-bottom: 0.4rem; }
+.ai-feat p { font-size: 0.79rem; color: var(--mid); line-height: 1.65; margin-bottom: 0.8rem; }
+.af-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.8rem; }
+.af-tag { background: var(--cream2); color: var(--mid); font-size: 0.65rem; padding: 0.16rem 0.5rem; border-radius: 4px; }
+.how-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 1rem; }
+.how-step { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; text-align: center; }
+.how-num { width: 30px; height: 30px; background: var(--navy); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 0.88rem; margin: 0 auto 0.7rem; }
+.how-step h4 { font-family: var(--font-d); font-size: 0.88rem; color: var(--navy); margin-bottom: 0.3rem; }
+.how-step p { font-size: 0.75rem; color: var(--mid); line-height: 1.6; }
+.privacy-card { background: var(--sage-lt); border: 1px solid rgba(107,173,160,0.22); border-radius: var(--radius); padding: 1.5rem 2rem; display: flex; align-items: flex-start; gap: 1rem; }
+.privacy-card i { color: var(--sage); font-size: 1.2rem; margin-top: 0.1rem; flex-shrink: 0; }
+.privacy-card h4 { font-family: var(--font-d); font-size: 0.95rem; color: var(--navy); margin-bottom: 0.3rem; }
+.privacy-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════════════ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+.ceo-quote { background: var(--cream); border: 1px solid var(--border); border-left: 3px solid var(--sage); border-radius: 12px; padding: 1.4rem 1.8rem; margin-top: 1.3rem; }
+.ceo-quote blockquote { font-family: var(--font-d); font-style: italic; font-size: 1.05rem; color: var(--navy); line-height: 1.6; margin-bottom: 0.9rem; }
+.ceo-info { display: flex; align-items: center; gap: 0.75rem; }
+.ceo-av { width: 36px; height: 36px; background: linear-gradient(135deg, var(--sage), var(--sage2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 0.95rem; color: #fff; }
+.ceo-info h5 { font-size: 0.86rem; font-weight: 600; color: var(--navy); }
+.ceo-info p { font-size: 0.73rem; color: var(--muted); }
+.milestones { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.milestone { background: var(--cream); border: 1px solid var(--border); border-radius: 11px; padding: 1.2rem; cursor: pointer; transition: all 0.2s; }
+.milestone:hover { background: var(--white); box-shadow: var(--shadow); }
+.milestone h3 { font-family: var(--font-d); font-size: 1.5rem; color: var(--sage2); margin-bottom: 0.2rem; }
+.milestone p { font-size: 0.75rem; color: var(--mid); }
+.awards-box { margin-top: 0.9rem; background: var(--cream); border: 1px solid var(--border); border-radius: 11px; padding: 1.1rem 1.3rem; }
+.awards-box h5 { font-size: 0.7rem; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.6rem; }
+.award-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.79rem; color: var(--mid); padding: 0.25rem 0; cursor: pointer; transition: color 0.2s; }
+.award-item:hover { color: var(--navy); }
+.reg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.1rem; }
+.reg-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; text-align: center; cursor: pointer; transition: all 0.25s; }
+.reg-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.reg-icon { font-size: 1.7rem; margin-bottom: 0.6rem; display: block; }
+.reg-card h4 { font-family: var(--font-d); font-size: 0.9rem; color: var(--navy); margin-bottom: 0.35rem; }
+.reg-card p { font-size: 0.76rem; color: var(--mid); line-height: 1.6; }
+.reg-badge-txt { color: var(--gold); font-size: 0.67rem; font-weight: 600; margin-top: 0.5rem; display: block; }
+.reg-note { background: var(--white); border: 1px solid var(--border); border-radius: 9px; padding: 1rem 1.5rem; font-size: 0.75rem; color: var(--muted); line-height: 1.7; text-align: center; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer { background: var(--navy); padding: 3rem 4% 2rem; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+.f-brand .logo { color: #fff; margin-bottom: 0.6rem; display: block; }
+.f-brand .logo .dot { color: var(--sage); }
+.f-brand p { font-size: 0.77rem; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 210px; margin-bottom: 1rem; }
+.socials { display: flex; gap: 0.5rem; }
+.soc { width: 30px; height: 30px; background: rgba(255,255,255,0.06); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.77rem; transition: all 0.2s; cursor: pointer; }
+.soc:hover { background: var(--sage); color: #fff; }
+.f-col h5 { font-size: 0.73rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-bottom: 0.9rem; }
+.f-col ul { list-style: none; }
+.f-col ul li { margin-bottom: 0.5rem; }
+.f-col ul li a { font-size: 0.79rem; color: rgba(255,255,255,0.3); cursor: pointer; transition: color 0.2s; }
+.f-col ul li a:hover { color: rgba(255,255,255,0.75); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.f-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+.f-rbi { font-size: 0.66rem; color: rgba(255,255,255,0.17); max-width: 500px; line-height: 1.5; }
+
+/* ═══════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(30,40,60,0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--white);
+  border-radius: 16px;
+  max-width: 520px; width: 100%;
+  max-height: 88vh; overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(44,74,110,0.2);
+  position: relative;
+  animation: modal-in 0.25s ease;
+}
+@keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.modal-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 1.7rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--white); border-radius: 16px 16px 0 0; z-index: 1;
+}
+.modal-head h3 { font-family: var(--font-d); font-size: 1.2rem; color: var(--navy); }
+.modal-close { background: none; border: none; font-size: 1rem; color: var(--muted); cursor: pointer; padding: 0.2rem; transition: color 0.2s; line-height: 1; }
+.modal-close:hover { color: var(--charcoal); }
+.modal-body { padding: 1.4rem 1.7rem 1.8rem; }
+.modal-body p { font-size: 0.85rem; color: var(--mid); line-height: 1.8; margin-bottom: 1rem; }
+.modal-section { margin-bottom: 1.1rem; }
+.modal-section h4 { font-size: 0.72rem; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.6rem; }
+.modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.modal-section ul li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.83rem; color: var(--mid); line-height: 1.55; }
+.modal-section ul li::before { content: ''; width: 6px; height: 6px; background: var(--sage); border-radius: 50%; flex-shrink: 0; margin-top: 0.44rem; }
+.modal-elig { background: var(--cream); border-radius: 9px; padding: 0.9rem 1.1rem; font-size: 0.8rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.2rem; }
+.modal-elig strong { color: var(--navy); }
+.modal-view2 { display: none; }
+.modal-view2.show { display: block; }
+.modal-view1.hide { display: none; }
+.charges-table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
+.charges-table td { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+.charges-table tr:last-child td { border-bottom: none; }
+.charges-table td:first-child { color: var(--mid); }
+.charges-table td:last-child { color: var(--navy); font-weight: 600; text-align: right; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .hero, .neo-hero, .ai-hero, .about-grid { grid-template-columns: 1fr; }
+  .hero-right, .neo-phone-wrap, .ai-dash { display: none; }
+  .quick-links { grid-template-columns: repeat(4, 1fr); }
+  .highlights { grid-template-columns: 1fr 1fr; }
+  .tab-panel.is-active { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-row2 { display: none; }
+  .hamburger { display: block; }
+}
+@media (max-width: 600px) {
+  .quick-links { grid-template-columns: repeat(4, 1fr); }
+  .highlights { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+  .milestones { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-ctas, .neo-ctas { flex-direction: column; align-items: flex-start; }
+  .neo-cta-strip { flex-direction: column; text-align: center; }
+  .compare-tbl { font-size: 0.73rem; }
+  .fd-form-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════ -->
+<nav id="main-nav">
+  <div class="nav-row1">
+    <div class="logo" onclick="goPage('home')">Riva <span class="dot">Bank</span></div>
+    <div class="nav-btns">
+      <button class="btn-login">Login</button>
+      <button class="btn-open" onclick="goPage('account')">Open Account</button>
+      <button class="hamburger" id="hambBtn"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="nav-row2" id="desktopTabs">
+    <button class="nav-tab is-active" data-page="home">Home</button>
+    <button class="nav-tab" data-page="products">Products</button>
+    <button class="nav-tab" data-page="services">Services</button>
+    <button class="nav-tab" data-page="calculator">Calculators</button>
+    <button class="nav-tab" data-page="rates">Rates &amp; Charges</button>
+    <button class="nav-tab" data-page="neo">Neo by Riva ✦</button>
+    <button class="nav-tab" data-page="ai">AI Insights</button>
+    <button class="nav-tab" data-page="about">About</button>
+    <button class="nav-tab" data-page="account">Open Account</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mob-tab is-active" data-page="home">Home</button>
+    <button class="mob-tab" data-page="products">Products</button>
+    <button class="mob-tab" data-page="services">Services</button>
+    <button class="mob-tab" data-page="calculator">Calculators</button>
+    <button class="mob-tab" data-page="rates">Rates &amp; Charges</button>
+    <button class="mob-tab" data-page="neo">Neo by Riva</button>
+    <button class="mob-tab" data-page="ai">AI Insights</button>
+    <button class="mob-tab" data-page="about">About</button>
+    <button class="mob-tab" data-page="account">Open Account</button>
+  </div>
+</nav>
+
+<!-- ═══ HOME ══════════════════════════════════════════ -->
+<div class="page is-active" id="pg-home">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">RBI Regulated · Trusted Since 2019</div>
+      <h1 class="hero-title">Banking that<br/><em>moves with you.</em></h1>
+      <p class="hero-sub">Riva Bank is a fully RBI-regulated private sector bank offering intelligent, accessible banking for every Indian — from your first savings account to your first home loan.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="goPage('account')">Open an Account</button>
+        <button class="btn-outline" onclick="goPage('products')">Explore Products</button>
+      </div>
+      <div class="trust-bar">
+        <div class="trust-item"><i class="fas fa-university"></i> RBI Regulated</div>
+        <div class="trust-item"><i class="fas fa-shield-alt"></i> DICGC Insured</div>
+        <div class="trust-item"><i class="fas fa-lock"></i> ISO 27001</div>
+        <div class="trust-item"><i class="fas fa-headset"></i> 24/7 Support</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hcard">
+        <div class="hcard-lbl">Your Balance</div>
+        <div class="hcard-val">₹2,45,830.50</div>
+        <div class="hcard-sub">Riva Savings Account •••• 4291</div>
+      </div>
+      <div class="hrates">
+        <div class="hrate"><div class="rv">7.2%</div><div class="rl">Savings p.a.</div></div>
+        <div class="hrate"><div class="rv">8.5%</div><div class="rl">Best FD p.a.</div></div>
+        <div class="hrate"><div class="rv">8.4%</div><div class="rl">Home Loan p.a.</div></div>
+      </div>
+      <div class="hcard" style="display:flex;align-items:center;gap:.9rem;">
+        <span style="font-size:1.5rem;">🏆</span>
+        <div>
+          <div style="font-size:.7rem;color:var(--mid)">NASSCOM Fintech Awards 2024</div>
+          <div style="font-family:var(--font-d);font-size:.9rem;color:var(--navy)">Best Digital Bank — India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="quick-links">
+    <div class="ql" onclick="goPage('products')"><i class="fas fa-piggy-bank"></i><span>Savings</span></div>
+    <div class="ql" onclick="goPage('products')"><i class="fas fa-home"></i><span>Home Loan</span></div>
+    <div class="ql" onclick="goPage('products')"><i class="fas fa-credit-card"></i><span>Cards</span></div>
+    <div class="ql" onclick="goPage('calculator')"><i class="fas fa-calculator"></i><span>EMI Calc</span></div>
+    <div class="ql" onclick="goPage('neo')"><i class="fas fa-bolt"></i><span>Neo by Riva</span></div>
+    <div class="ql" onclick="goPage('ai')"><i class="fas fa-brain"></i><span>AI Insights</span></div>
+    <div class="ql" onclick="goPage('rates')"><i class="fas fa-percentage"></i><span>Rates</span></div>
+    <div class="ql" onclick="goPage('account')"><i class="fas fa-user-plus"></i><span>Open Account</span></div>
+  </div>
+  <div class="highlights">
+    <div class="hl-card" onclick="goPage('neo')">
+      <div class="hl-icon">⚡</div>
+      <div class="chip chip-gold" style="margin-bottom:.7rem;">New</div>
+      <h4>Neo by Riva</h4>
+      <p>Digital-only banking for the next India. Zero fees, smart pockets, invest from ₹10.</p>
+      <div class="hl-link">Explore Neo <i class="fas fa-arrow-right" style="font-size:.7rem"></i></div>
+    </div>
+    <div class="hl-card" onclick="goPage('ai')">
+      <div class="hl-icon">🧠</div>
+      <div class="chip chip-sage" style="margin-bottom:.7rem;">AI-Powered</div>
+      <h4>Riva AI Insights</h4>
+      <p>Data-driven intelligence that analyses your spending and helps you build wealth faster.</p>
+      <div class="hl-link">See AI Features <i class="fas fa-arrow-right" style="font-size:.7rem"></i></div>
+    </div>
+    <div class="hl-card" onclick="goPage('calculator')">
+      <div class="hl-icon">🧮</div>
+      <h4>EMI &amp; FD Calculator</h4>
+      <p>Plan your home loan or fixed deposit with our interactive calculators. Instant results.</p>
+      <div class="hl-link">Calculate Now <i class="fas fa-arrow-right" style="font-size:.7rem"></i></div>
+    </div>
+    <div class="hl-card" onclick="goPage('products')">
+      <div class="hl-icon">🏦</div>
+      <h4>All Products</h4>
+      <p>Savings, FDs, home loans, personal loans, and credit cards — all under one roof.</p>
+      <div class="hl-link">View Products <i class="fas fa-arrow-right" style="font-size:.7rem"></i></div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="f-brand"><span class="logo">Riva <span class="dot">Bank</span></span><p>Where your money flows. RBI-regulated. DICGC-insured. Trusted by 2 million Indians.</p><div class="socials"><div class="soc"><i class="fab fa-linkedin-in"></i></div><div class="soc"><i class="fab fa-twitter"></i></div><div class="soc"><i class="fab fa-instagram"></i></div><div class="soc"><i class="fab fa-youtube"></i></div></div></div>
+      <div class="f-col"><h5>Products</h5><ul><li><a onclick="goPage('products')">Savings Account</a></li><li><a onclick="goPage('products')">Fixed Deposits</a></li><li><a onclick="goPage('products')">Home Loans</a></li><li><a onclick="goPage('products')">Credit Cards</a></li><li><a onclick="goPage('neo')">Neo by Riva</a></li></ul></div>
+      <div class="f-col"><h5>Company</h5><ul><li><a onclick="goPage('about')">About Us</a></li><li><a>Careers</a></li><li><a>Press &amp; Media</a></li><li><a>Branch Locator</a></li><li><a onclick="goPage('ai')">AI Insights</a></li></ul></div>
+      <div class="f-col"><h5>Help</h5><ul><li><a>1800-209-RIVA</a></li><li><a>Grievance Redressal</a></li><li><a>Privacy Policy</a></li><li><a>Terms of Service</a></li><li><a onclick="goPage('rates')">Rates &amp; Charges</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="f-copy">© 2025 Riva Bank Pvt. Ltd. All rights reserved. CIN: U65191MH2019PTC000001</div><div class="f-rbi">Riva Bank is a Scheduled Commercial Bank regulated by the Reserve Bank of India. Deposits insured under DICGC up to ₹5,00,000. Investments subject to market risk. IRDAI Reg. No. CA0528.</div></div>
+  </footer>
+</div>
+
+<!-- ═══ PRODUCTS ══════════════════════════════════════ -->
+<div class="page" id="pg-products">
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">Products</span><h2 class="sec-title">Built for every stage of life.</h2><p class="sec-sub">Click any product to see full details, features, and eligibility.</p></div>
+    <div class="pill-tabs">
+      <button class="pill-tab is-active" data-panel="all">All Products</button>
+      <button class="pill-tab" data-panel="accounts">Accounts</button>
+      <button class="pill-tab" data-panel="loans">Loans</button>
+      <button class="pill-tab" data-panel="invest">Investments</button>
+      <button class="pill-tab" data-panel="cards">Cards</button>
+    </div>
+    <div class="pill-panel is-active" id="pp-all">
+      <div class="prod-card" onclick="openProd('savings')"><div class="prod-icon">🏦</div><div class="chip chip-gold" style="margin-bottom:.7rem">Up to 7.2% p.a.</div><h3>Savings Account</h3><p>Zero balance, high interest, instant KYC. Your everyday banking, reimagined.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('fd')"><div class="prod-icon">📊</div><div class="chip chip-gold" style="margin-bottom:.7rem">Up to 8.5% p.a.</div><h3>Fixed Deposits</h3><p>Guaranteed returns, flexible tenures, start from ₹500. Safe and rewarding.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('homeloan')"><div class="prod-icon">🏠</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 8.40% p.a.</div><h3>Home Loan</h3><p>Finance your dream home with low EMIs, long tenures, zero hidden charges.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('ploan')"><div class="prod-icon">💸</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 10.5% p.a.</div><h3>Personal Loan</h3><p>Up to ₹40 lakh, instant disbursal, no collateral. For any life need.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('cc')"><div class="prod-icon">💳</div><div class="chip chip-sage" style="margin-bottom:.7rem">Virtual Card Instant</div><h3>Credit Cards</h3><p>Rewards, cashback, travel miles. Choose the card for your lifestyle.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('carloan')"><div class="prod-icon">🚗</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 8.75% p.a.</div><h3>Car Loan</h3><p>New or pre-owned vehicles. Up to 100% on-road funding, 1–7 year tenures.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+    <div class="pill-panel" id="pp-accounts">
+      <div class="prod-card" onclick="openProd('savings')"><div class="prod-icon">🏦</div><div class="chip chip-gold" style="margin-bottom:.7rem">Up to 7.2% p.a.</div><h3>Savings Account</h3><p>Zero balance, instant KYC, high interest on every rupee.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('current')"><div class="prod-icon">💼</div><div class="chip chip-navy" style="margin-bottom:.7rem">Business</div><h3>Current Account</h3><p>For businesses, traders, and professionals. Higher transaction limits.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('nri')"><div class="prod-icon">✈️</div><div class="chip chip-navy" style="margin-bottom:.7rem">NRI Banking</div><h3>NRI Account</h3><p>NRE, NRO, and FCNR accounts with full repatriation facility.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+    <div class="pill-panel" id="pp-loans">
+      <div class="prod-card" onclick="openProd('homeloan')"><div class="prod-icon">🏠</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 8.40% p.a.</div><h3>Home Loan</h3><p>Up to ₹10 crore. 30-year tenure. 90% funding.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('ploan')"><div class="prod-icon">💸</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 10.5% p.a.</div><h3>Personal Loan</h3><p>Up to ₹40 lakh. Instant disbursal. No collateral.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('carloan')"><div class="prod-icon">🚗</div><div class="chip chip-gold" style="margin-bottom:.7rem">From 8.75% p.a.</div><h3>Car Loan</h3><p>New or pre-owned. Up to 100% on-road funding.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('edloan')"><div class="prod-icon">🎓</div><div class="chip chip-sage" style="margin-bottom:.7rem">From 8.15% p.a.</div><h3>Education Loan</h3><p>India &amp; abroad. Up to ₹1.5 crore. Moratorium during study.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+    <div class="pill-panel" id="pp-invest">
+      <div class="prod-card" onclick="openProd('fd')"><div class="prod-icon">📊</div><div class="chip chip-gold" style="margin-bottom:.7rem">Up to 8.5% p.a.</div><h3>Fixed Deposits</h3><p>Guaranteed returns. Flexible tenures. Senior citizen benefits.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('mf')"><div class="prod-icon">📈</div><div class="chip chip-sage" style="margin-bottom:.7rem">SEBI Registered</div><h3>Mutual Funds</h3><p>Direct plans. Zero commission. SIP from ₹500/month.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('insurance')"><div class="prod-icon">🛡️</div><div class="chip chip-navy" style="margin-bottom:.7rem">IRDAI Approved</div><h3>Insurance</h3><p>Life, health, motor, and home from leading providers.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+    <div class="pill-panel" id="pp-cards">
+      <div class="prod-card" onclick="openProd('cc')"><div class="prod-icon">💳</div><div class="chip chip-sage" style="margin-bottom:.7rem">Virtual Card Instant</div><h3>Credit Card</h3><p>Rewards, cashback, travel miles. Virtual card on approval.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="prod-card" onclick="openProd('debit')"><div class="prod-icon">🔑</div><div class="chip chip-navy" style="margin-bottom:.7rem">Free with Account</div><h3>Debit Card</h3><p>Contactless, UPI on-card, dynamic CVV, international usage.</p><button class="btn-ghost">Know More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ══════════════════════════════════════ -->
+<div class="page" id="pg-services">
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">Services</span><h2 class="sec-title">Everything you need to bank well.</h2><p class="sec-sub">Click any service card to learn more about what's included.</p></div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="openSvc('netbanking')"><div class="svc-icon">📱</div><h3>NetBanking &amp; Mobile App</h3><p>Complete account management, transfers, bill payments, 24/7 from your phone or browser. 4.8★ on both app stores.</p><div class="svc-tags"><span class="svc-tag">Transfers</span><span class="svc-tag">Bill Pay</span><span class="svc-tag">Biometric Login</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="svc-card" onclick="openSvc('upi')"><div class="svc-icon">⚡</div><h3>UPI &amp; Instant Payments</h3><p>Send money 24/7 via UPI, IMPS, NEFT, RTGS. QR code, phone number, or account. Zero charges.</p><div class="svc-tags"><span class="svc-tag">UPI</span><span class="svc-tag">IMPS</span><span class="svc-tag">NEFT / RTGS</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="svc-card" onclick="openSvc('forex')"><div class="svc-icon">🌍</div><h3>Forex &amp; International</h3><p>Send money abroad, buy/sell foreign currency, issue travel cards with zero markup on premium plans.</p><div class="svc-tags"><span class="svc-tag">Wire Transfer</span><span class="svc-tag">Forex Card</span><span class="svc-tag">30+ Currencies</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="svc-card" onclick="openSvc('invest2')"><div class="svc-icon">📈</div><h3>Investment Services</h3><p>Access mutual funds, bonds, RBI savings bonds, and IPOs directly through your Riva account.</p><div class="svc-tags"><span class="svc-tag">MF Direct</span><span class="svc-tag">IPO</span><span class="svc-tag">Bonds</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="svc-card" onclick="openSvc('insurance2')"><div class="svc-icon">🛡️</div><h3>Insurance Marketplace</h3><p>Compare and buy life, health, motor, and home insurance from India's top providers, all in one place.</p><div class="svc-tags"><span class="svc-tag">Life</span><span class="svc-tag">Health</span><span class="svc-tag">Motor</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+      <div class="svc-card" onclick="openSvc('locker')"><div class="svc-icon">🔒</div><h3>Safe Deposit Lockers</h3><p>Secure your valuables in biometric-access lockers across 500+ branches. 24/7 CCTV, insured.</p><div class="svc-tags"><span class="svc-tag">500+ Branches</span><span class="svc-tag">Biometric</span><span class="svc-tag">Insured</span></div><button class="btn-text">Learn More <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CALCULATOR ═════════════════════════════════════ -->
+<div class="page" id="pg-calculator">
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">Financial Tools</span><h2 class="sec-title">Plan with confidence.</h2><p class="sec-sub">Free calculators to estimate loan EMIs and FD returns instantly. No sign-in required.</p></div>
+    <div class="tab-strip">
+      <button class="tab-btn is-active" data-calc="emi">EMI Calculator</button>
+      <button class="tab-btn" data-calc="fdcalc">FD Returns Calculator</button>
+    </div>
+    <div class="tab-panel is-active" id="cp-emi">
+      <div>
+        <div class="sl-group"><label>Loan Amount <span id="lAmt">₹10,00,000</span></label><input type="range" id="sAmt" min="100000" max="10000000" step="50000" value="1000000"/></div>
+        <div class="sl-group"><label>Interest Rate <span id="lRate">8.5%</span></label><input type="range" id="sRate" min="6" max="24" step="0.1" value="8.5"/></div>
+        <div class="sl-group"><label>Tenure <span id="lTen">10 Years</span></label><input type="range" id="sTen" min="1" max="30" step="1" value="10"/></div>
+        <p style="font-size:.72rem;color:var(--muted);margin-top:.5rem"><i class="fas fa-info-circle"></i> Indicative results. Final rates depend on eligibility.</p>
+        <button class="btn-primary" style="margin-top:1.2rem;width:100%" onclick="goPage('account')">Apply for Loan →</button>
+      </div>
+      <div class="calc-result">
+        <div class="emi-lbl">Monthly EMI</div>
+        <div class="emi-big" id="rEmi">₹12,399</div>
+        <div style="margin-bottom:1rem">
+          <div class="break-row"><span class="bl">Principal Amount</span><span class="bv" id="rPrin">₹10,00,000</span></div>
+          <div class="break-row"><span class="bl">Total Interest Payable</span><span class="bv" id="rInt">₹4,87,876</span></div>
+          <div class="break-row"><span class="bl">Total Amount Payable</span><span class="bv" id="rTot">₹14,87,876</span></div>
+        </div>
+        <div class="donut-wrap">
+          <div class="donut">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <circle cx="43" cy="43" r="32" fill="none" stroke="var(--border)" stroke-width="11"/>
+              <circle id="dPrin" cx="43" cy="43" r="32" fill="none" stroke="var(--sage)" stroke-width="11" stroke-dasharray="201 201" stroke-dashoffset="0"/>
+              <circle id="dInt" cx="43" cy="43" r="32" fill="none" stroke="var(--gold)" stroke-width="11" stroke-dasharray="0 201" stroke-dashoffset="0"/>
+            </svg>
+          </div>
+          <div class="donut-legend">
+            <div class="leg"><div class="leg-dot" style="background:var(--sage)"></div>Principal <strong id="legP" style="color:var(--navy);margin-left:3px">67%</strong></div>
+            <div class="leg"><div class="leg-dot" style="background:var(--gold)"></div>Interest <strong id="legI" style="color:var(--navy);margin-left:3px">33%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="cp-fdcalc">
+      <div>
+        <div class="fd-form-grid">
+          <div class="field"><label>PRINCIPAL AMOUNT (₹)</label><input type="number" id="fdP" value="100000"/></div>
+          <div class="field"><label>INTEREST RATE (% p.a.)</label><input type="number" id="fdR" value="8.5" step="0.1"/></div>
+          <div class="field"><label>TENURE</label><input type="number" id="fdT" value="2"/></div>
+          <div class="field"><label>TENURE TYPE</label><select id="fdTt"><option value="years">Years</option><option value="months">Months</option></select></div>
+        </div>
+        <div class="field" style="margin-top:.8rem"><label>COMPOUNDING FREQUENCY</label><select id="fdF"><option value="4">Quarterly (Standard)</option><option value="12">Monthly</option><option value="1">Annually</option><option value="2">Half-Yearly</option></select></div>
+        <p style="font-size:.71rem;color:var(--muted);margin-top:.7rem"><i class="fas fa-info-circle"></i> Senior citizens earn additional 0.50% p.a. TDS applicable on interest above ₹40,000/year.</p>
+        <button class="btn-sage" style="width:100%;margin-top:1rem" onclick="goPage('products')">Book FD Now →</button>
+      </div>
+      <div class="fd-result">
+        <div style="font-size:.7rem;color:var(--sage2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.35rem">Maturity Amount</div>
+        <div class="fd-mat" id="fdMat">₹1,18,097</div>
+        <div class="fd-rows">
+          <div class="fd-row"><span class="fl">Principal Invested</span><span class="fv" id="fdVp">₹1,00,000</span></div>
+          <div class="fd-row"><span class="fl">Total Interest Earned</span><span class="fv rate-hi" id="fdVi">₹18,097</span></div>
+          <div class="fd-row"><span class="fl">Effective Yield</span><span class="fv" id="fdVy">8.78% p.a.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RATES ══════════════════════════════════════════ -->
+<div class="page" id="pg-rates">
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">Rates &amp; Charges</span><h2 class="sec-title">Clear, transparent rates.</h2><p class="sec-sub">No hidden charges. Click any row for more details. Rates effective 1 January 2025.</p></div>
+    <div class="line-tabs">
+      <button class="line-tab is-active" data-rtab="sav">Savings Account</button>
+      <button class="line-tab" data-rtab="fdr">Fixed Deposits</button>
+      <button class="line-tab" data-rtab="lnr">Loan Rates</button>
+      <button class="line-tab" data-rtab="chg">Service Charges</button>
+    </div>
+    <div class="line-panel is-active" id="rp-sav">
+      <table><thead><tr><th>Balance Slab</th><th>Rate (p.a.)</th></tr></thead><tbody>
+        <tr onclick="openRate('₹0 – ₹1 Lakh','5.00% p.a.','Interest calculated on daily closing balance, credited quarterly. Zero minimum balance on Riva Savings Account.')"><td>₹0 – ₹1 Lakh</td><td>5.00%</td></tr>
+        <tr onclick="openRate('₹1 Lakh – ₹5 Lakh','6.00% p.a.','Higher slabs unlock better rates. Credited quarterly to your account automatically.')"><td>₹1 Lakh – ₹5 Lakh</td><td>6.00%</td></tr>
+        <tr onclick="openRate('₹5 Lakh – ₹25 Lakh','6.75% p.a.','Available on Riva Savings and Riva Premium accounts. Interest credited quarterly.')"><td>₹5 Lakh – ₹25 Lakh</td><td>6.75%</td></tr>
+        <tr onclick="openRate('Above ₹25 Lakh','7.20% p.a. ✦ Best Rate','Best-in-class savings rate. Customers also become eligible for Riva Priority Banking.')"><td>Above ₹25 Lakh</td><td class="rate-hi">7.20% ✦</td></tr>
+      </tbody></table>
+    </div>
+    <div class="line-panel" id="rp-fdr">
+      <table><thead><tr><th>Tenure</th><th>General (p.a.)</th><th>Senior Citizens (p.a.)</th></tr></thead><tbody>
+        <tr onclick="openRate('7–29 Days FD','4.50% General | 5.00% Senior','Short-term FDs for surplus funds. Interest paid at maturity. Premature withdrawal with 1% penalty.')"><td>7 – 29 Days</td><td>4.50%</td><td>5.00%</td></tr>
+        <tr onclick="openRate('30–90 Days FD','5.25% General | 5.75% Senior','Suitable for short-term goals. Premature withdrawal allowed with 1% penalty.')"><td>30 – 90 Days</td><td>5.25%</td><td>5.75%</td></tr>
+        <tr onclick="openRate('6 Months – 1 Year','7.00% General | 7.50% Senior','Popular segment for short-medium term returns. Quarterly payout available.')"><td>6 Months – 1 Year</td><td>7.00%</td><td>7.50%</td></tr>
+        <tr onclick="openRate('1 Year – 2 Years','7.75% General | 8.25% Senior','Most popular segment. Quarterly interest payout or cumulative reinvestment.')"><td>1 Year – 2 Years</td><td>7.75%</td><td>8.25%</td></tr>
+        <tr onclick="openRate('2–3 Years','8.25% General | 8.75% Senior','Ideal for medium-term goals like a car down payment or education fund.')"><td>2 – 3 Years</td><td>8.25%</td><td>8.75%</td></tr>
+        <tr onclick="openRate('3 Years &amp; Above','8.50% General | 9.00% Senior','Best rate available. Recommended for retirement corpus building for senior citizens.')"><td>3 Years &amp; Above</td><td class="rate-hi">8.50% ✦</td><td class="rate-hi">9.00% ✦</td></tr>
+      </tbody></table>
+    </div>
+    <div class="line-panel" id="rp-lnr">
+      <table><thead><tr><th>Loan Type</th><th>Rate (p.a.)</th><th>Processing Fee</th></tr></thead><tbody>
+        <tr onclick="openRate('Home Loan','8.40% – 9.50% p.a.','Floating rate linked to Riva MCLR. Nil prepayment on floating rate. Balance transfer available.')"><td>Home Loan</td><td>8.40% – 9.50%</td><td>0.50% (Max ₹10,000)</td></tr>
+        <tr onclick="openRate('Loan Against Property','9.25% – 11.00% p.a.','Unlock up to 70% of your property value. Residential and commercial properties eligible.')"><td>Loan Against Property</td><td>9.25% – 11.00%</td><td>1.00% (Max ₹15,000)</td></tr>
+        <tr onclick="openRate('Personal Loan','10.50% – 18.00% p.a.','No collateral. Instant disbursal within 4 hours for pre-approved customers.')"><td>Personal Loan</td><td>10.50% – 18.00%</td><td>2.00% (Max ₹25,000)</td></tr>
+        <tr onclick="openRate('Car Loan','8.75% – 11.50% p.a.','New and pre-owned vehicles. Up to 100% on-road price for eligible customers.')"><td>Car Loan</td><td>8.75% – 11.50%</td><td>₹3,000 – ₹5,000</td></tr>
+        <tr onclick="openRate('Education Loan','8.15% – 10.00% p.a.','India and abroad. Moratorium during study + 1 year. Tax benefit under Section 80E.')"><td>Education Loan</td><td class="rate-hi">8.15% – 10.00%</td><td>Nil</td></tr>
+      </tbody></table>
+    </div>
+    <div class="line-panel" id="rp-chg">
+      <table><thead><tr><th>Service</th><th>Charge</th></tr></thead><tbody>
+        <tr onclick="openRate('NEFT / RTGS (Online)','Free — ₹0','All online NEFT and RTGS transactions via NetBanking and Mobile App are free, 24/7.')"><td>NEFT / RTGS (Online)</td><td class="rate-hi">Free</td></tr>
+        <tr onclick="openRate('UPI Transactions','Free — ₹0','All UPI transactions including UPI Lite and UPI 123PAY are free of charge.')"><td>UPI Transactions</td><td class="rate-hi">Free</td></tr>
+        <tr onclick="openRate('ATM Withdrawals (Own)','Free — Unlimited','Unlimited free withdrawals at all Riva Bank ATMs. 5 free transactions at other bank ATMs monthly.')"><td>ATM Withdrawals (Own)</td><td class="rate-hi">Free</td></tr>
+        <tr onclick="openRate('Cheque Book','Free (25 leaves/quarter)','First 25 cheque leaves free per quarter. Additional: ₹4 per leaf.')"><td>Cheque Book</td><td>Free (25/qtr)</td></tr>
+        <tr onclick="openRate('Account Statement','Free — Digital','Digital statements via NetBanking and email are always free. Physical: ₹100 per request.')"><td>Account Statement</td><td class="rate-hi">Free (Digital)</td></tr>
+      </tbody></table>
+    </div>
+    <p class="tbl-note">* Rates w.e.f. 01 January 2025. Subject to change. Please refer to the Schedule of Charges on the RBI-approved rate card for complete details.</p>
+  </div>
+</div>
+
+<!-- ═══ NEO ════════════════════════════════════════════ -->
+<div class="page" id="pg-neo">
+  <div class="neo-hero">
+    <div>
+      <div class="neo-eyebrow">✦ Digital Subsidiary</div>
+      <h1 class="neo-title">Banking for<br/><em>the next India.</em></h1>
+      <p class="neo-sub">Neo by Riva is our digital-only banking arm — built for India's 600 million internet users who deserve banking that's instant, intelligent, and completely paperless.</p>
+      <div class="neo-ctas">
+        <button class="btn-sage" onclick="openNeoWaitlist()">Join Waitlist</button>
+        <button class="btn-outline" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)">Compare vs Traditional</button>
+      </div>
+    </div>
+    <div class="neo-phone-wrap">
+      <div class="p-badge pb1">🔥 <span>12,000+</span> on waitlist</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="p-notch"></div>
+          <div class="p-app-name">NEO BY RIVA</div>
+          <div class="p-bal-lbl">Total Balance</div>
+          <div class="p-bal">₹48,320.00</div>
+          <div class="p-sec-lbl">MY POCKETS</div>
+          <div class="p-pocket"><div class="p-pocket-row"><span>🏠 Rent</span><span style="color:var(--sage)">₹15,000</span></div><div class="p-pocket-bar"><div class="p-pocket-fill" style="width:70%;background:var(--sage)"></div></div></div>
+          <div class="p-pocket"><div class="p-pocket-row"><span>🛒 Groceries</span><span style="color:var(--gold)">₹4,200</span></div><div class="p-pocket-bar"><div class="p-pocket-fill" style="width:42%;background:var(--gold)"></div></div></div>
+          <div class="p-pocket"><div class="p-pocket-row"><span>📈 Investing</span><span style="color:#A78BFA">₹8,000</span></div><div class="p-pocket-bar"><div class="p-pocket-fill" style="width:55%;background:#A78BFA"></div></div></div>
+          <div class="p-pocket"><div class="p-pocket-row"><span>🎮 Fun</span><span style="color:var(--rose)">₹2,500</span></div><div class="p-pocket-bar"><div class="p-pocket-fill" style="width:25%;background:var(--rose)"></div></div></div>
+          <div style="margin-top:.7rem;text-align:center;font-size:.56rem;color:rgba(255,255,255,.25)">Micro-invest from ₹10 · Auto-save: ON</div>
+        </div>
+      </div>
+      <div class="p-badge pb2">⚡ Opens in <span>5 mins</span></div>
+    </div>
+  </div>
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">Why Neo</span><h2 class="sec-title">Designed for how India actually lives.</h2><p class="sec-sub">Click any card to learn more about each feature.</p></div>
+    <div class="neo-why-grid">
+      <div class="nw-card" onclick="openNeoFeat('instant')"><span class="nw-ico">⚡</span><h4>Instant Account</h4><p>Full KYC via video in under 5 minutes. No branch, no forms, no waiting.</p></div>
+      <div class="nw-card" onclick="openNeoFeat('zero')"><span class="nw-ico">₹0</span><h4>Zero Fees Forever</h4><p>No minimum balance. No annual charges. No hidden fees. Ever.</p></div>
+      <div class="nw-card" onclick="openNeoFeat('lang')"><span class="nw-ico">🗣️</span><h4>12 Indian Languages</h4><p>Hindi, Tamil, Telugu, Kannada, Bengali, Marathi &amp; more.</p></div>
+      <div class="nw-card" onclick="openNeoFeat('rural')"><span class="nw-ico">🌾</span><h4>Works on 2G</h4><p>Lite mode for low connectivity areas. Banking for Bharat, not just metros.</p></div>
+      <div class="nw-card" onclick="openNeoFeat('smart')"><span class="nw-ico">🗂️</span><h4>Smart Pockets</h4><p>Split your salary into labelled pockets. Money flows where it should.</p></div>
+      <div class="nw-card" onclick="openNeoFeat('invest')"><span class="nw-ico">📈</span><h4>Invest from ₹10</h4><p>ETF baskets — Nifty 50, Gold, US Tech. No demat account needed.</p></div>
+    </div>
+  </div>
+  <div class="sec bg-cream2">
+    <div class="sec-hdr"><span class="sec-lbl">Built for India</span><h2 class="sec-title">How Neo helps real Indians.</h2><p class="sec-sub">Click any use case to see how Neo addresses that specific need.</p></div>
+    <div class="india-grid">
+      <div class="india-card" onclick="openIndiaCase('gig')"><div class="india-ico">🛵</div><div><h4>Gig Workers &amp; Freelancers</h4><p>Irregular income? Neo's flexible pockets and salary advance are built for non-9-to-5 earners.</p></div></div>
+      <div class="india-card" onclick="openIndiaCase('student')"><div class="india-ico">🎓</div><div><h4>Students &amp; First Jobbers</h4><p>Open on your first stipend. Build CIBIL from day one. Invest from ₹10/month.</p></div></div>
+      <div class="india-card" onclick="openIndiaCase('homemaker')"><div class="india-ico">🏡</div><div><h4>Homemakers</h4><p>Manage household budgets with smart pockets. AI nudges to save more each month.</p></div></div>
+      <div class="india-card" onclick="openIndiaCase('rural')"><div class="india-ico">🌾</div><div><h4>Rural &amp; Semi-Urban India</h4><p>12 languages. Works on 2G. Aadhaar-based eKYC. Backed by 500+ Riva branches.</p></div></div>
+      <div class="india-card" onclick="openIndiaCase('sme')"><div class="india-ico">🏪</div><div><h4>Small Business Owners</h4><p>Accept UPI, issue invoices, track expenses, pay GST — all from Neo.</p></div></div>
+      <div class="india-card" onclick="openIndiaCase('nri')"><div class="india-ico">✈️</div><div><h4>NRIs Sending Money Home</h4><p>Remittances at live rates. Family receives funds directly into their Neo account.</p></div></div>
+    </div>
+  </div>
+  <div class="sec bg-white" style="padding-top:2.5rem">
+    <div class="sec-hdr"><span class="sec-lbl">Comparison</span><h2 class="sec-title">Neo vs Traditional Banking.</h2></div>
+    <table class="compare-tbl"><thead><tr><th>Feature</th><th>Traditional Bank</th><th>✦ Neo by Riva</th></tr></thead><tbody>
+      <tr><td>Account Opening</td><td class="c-no">2–5 Days (Branch Visit)</td><td class="c-yes">✓ Under 5 Minutes (Video KYC)</td></tr>
+      <tr><td>Minimum Balance</td><td class="c-no">₹5,000 – ₹10,000</td><td class="c-yes">✓ ₹0 Forever</td></tr>
+      <tr><td>Language Support</td><td class="c-no">English + Hindi only</td><td class="c-yes">✓ 12 Indian Languages</td></tr>
+      <tr><td>Micro-Investing</td><td class="c-no">Not Available</td><td class="c-yes">✓ From ₹10</td></tr>
+      <tr><td>Budget Pockets</td><td class="c-no">Not Available</td><td class="c-yes">✓ Unlimited Smart Pockets</td></tr>
+      <tr><td>Credit Builder</td><td class="c-no">Requires Credit History</td><td class="c-yes">✓ No History Needed</td></tr>
+      <tr><td>Customer Support</td><td class="c-no">Branch Hours Only</td><td class="c-yes">✓ AI Chat 24/7</td></tr>
+    </tbody></table>
+  </div>
+  <div class="neo-cta-strip">
+    <div><h2>Ready to experience Neo by Riva?</h2><p>Join 12,000+ Indians on the waitlist. Launch early 2025.</p></div>
+    <button class="btn-sage" onclick="openNeoWaitlist()">Join Waitlist — It's Free</button>
+  </div>
+</div>
+
+<!-- ═══ AI INSIGHTS ════════════════════════════════════ -->
+<div class="page" id="pg-ai">
+  <div class="ai-hero">
+    <div>
+      <div class="hero-eyebrow">Data-Driven Banking</div>
+      <h1 class="hero-title" style="font-size:clamp(2rem,4vw,3rem)">Your money,<br/><em>understood.</em></h1>
+      <p class="hero-sub">Riva AI Insights analyses your financial behaviour, predicts your needs, and gives you personalised recommendations — in real time, in plain language.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="goPage('account')">Enable AI Insights</button>
+        <button class="btn-outline" onclick="openAI('overview')">How It Works</button>
+      </div>
+    </div>
+    <div class="ai-dash">
+      <div class="ai-dash-title">AI Insights Dashboard — March 2025</div>
+      <div class="ai-metrics">
+        <div class="ai-metric"><div class="mv">₹12,450</div><div class="ml">Saved This Month</div></div>
+        <div class="ai-metric"><div class="mv" style="color:var(--sage2)">782</div><div class="ml">CIBIL Score</div></div>
+        <div class="ai-metric"><div class="mv" style="color:var(--gold)">94%</div><div class="ml">Budget On Track</div></div>
+      </div>
+      <div style="font-size:.66rem;color:var(--muted);margin-bottom:.5rem;font-weight:600;letter-spacing:.5px">SPENDING BREAKDOWN</div>
+      <div class="ai-bar-g"><div class="ai-bar-lbl"><span>Food &amp; Dining</span><span>₹6,200</span></div><div class="ai-bar-track"><div class="ai-bar-fill" style="width:62%;background:var(--sage)"></div></div></div>
+      <div class="ai-bar-g"><div class="ai-bar-lbl"><span>Rent &amp; Utilities</span><span>₹18,000</span></div><div class="ai-bar-track"><div class="ai-bar-fill" style="width:85%;background:var(--navy)"></div></div></div>
+      <div class="ai-bar-g"><div class="ai-bar-lbl"><span>Shopping</span><span>₹3,800</span></div><div class="ai-bar-track"><div class="ai-bar-fill" style="width:38%;background:var(--gold)"></div></div></div>
+      <div class="ai-bar-g"><div class="ai-bar-lbl"><span>Entertainment</span><span>₹1,200</span></div><div class="ai-bar-track"><div class="ai-bar-fill" style="width:12%;background:var(--rose)"></div></div></div>
+      <div class="ai-chip">💡 You could save ₹1,400 more this month</div>
+    </div>
+  </div>
+  <div class="sec bg-white">
+    <div class="sec-hdr"><span class="sec-lbl">AI Features</span><h2 class="sec-title">Intelligent features that work for you.</h2><p class="sec-sub">Click any feature card for a detailed explanation of how it works.</p></div>
+    <div class="ai-feat-grid">
+      <div class="ai-feat" onclick="openAI('spending')"><div class="af-icon af-sage"><i class="fas fa-chart-pie" style="color:var(--sage)"></i></div><h3>Smart Spend Analysis</h3><p>Every transaction is auto-categorised. Get weekly breakdowns of where your money goes across UPI, cards, and netbanking.</p><div class="af-tags"><span class="af-tag">Auto-Categorise</span><span class="af-tag">Monthly Reports</span><span class="af-tag">Trend Analysis</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+      <div class="ai-feat" onclick="openAI('cashflow')"><div class="af-icon af-navy"><i class="fas fa-wave-square" style="color:var(--navy)"></i></div><h3>Cash Flow Prediction</h3><p>Predicts when you may run low on funds up to 30 days in advance, based on income patterns and recurring payments.</p><div class="af-tags"><span class="af-tag">30-Day Forecast</span><span class="af-tag">Bill Alerts</span><span class="af-tag">Overdraft Warning</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+      <div class="ai-feat" onclick="openAI('savings')"><div class="af-icon af-gold"><i class="fas fa-piggy-bank" style="color:var(--gold)"></i></div><h3>Savings Optimiser</h3><p>Recommends the ideal amount to save each month and the best product — FD, RD, or pocket savings — based on your goals.</p><div class="af-tags"><span class="af-tag">Goal Tracking</span><span class="af-tag">Product Match</span><span class="af-tag">Auto-Save</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+      <div class="ai-feat" onclick="openAI('credit')"><div class="af-icon af-rose"><i class="fas fa-chart-line" style="color:var(--rose)"></i></div><h3>Credit Health Monitor</h3><p>Track your CIBIL score in real time. Get personalised tips on improving it and predicting loan eligibility before you apply.</p><div class="af-tags"><span class="af-tag">CIBIL Tracking</span><span class="af-tag">Score Tips</span><span class="af-tag">Loan Eligibility</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+      <div class="ai-feat" onclick="openAI('nudge')"><div class="af-icon af-sage"><i class="fas fa-bell" style="color:var(--sage)"></i></div><h3>Financial Nudges</h3><p>Smart, non-intrusive alerts: "You've spent 80% of your dining budget", "₹5,000 sitting idle — park in an FD?"</p><div class="af-tags"><span class="af-tag">SIP Reminders</span><span class="af-tag">Budget Alerts</span><span class="af-tag">Idle Money Tips</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+      <div class="ai-feat" onclick="openAI('fraud')"><div class="af-icon af-navy"><i class="fas fa-shield-alt" style="color:var(--navy)"></i></div><h3>Fraud Detection</h3><p>AI monitors every transaction in real time. Unusual patterns trigger instant security alerts with one-tap card freeze.</p><div class="af-tags"><span class="af-tag">Real-Time Alerts</span><span class="af-tag">Pattern Learning</span><span class="af-tag">Auto-Block</span></div><button class="btn-text">Explore <i class="fas fa-arrow-right"></i></button></div>
+    </div>
+  </div>
+  <div class="sec bg-cream2">
+    <div class="sec-hdr"><span class="sec-lbl">Process</span><h2 class="sec-title">How Riva AI works.</h2></div>
+    <div class="how-steps">
+      <div class="how-step"><div class="how-num">1</div><h4>Data Collection</h4><p>Riva AI reads your transactions within your account boundary only. No external sharing.</p></div>
+      <div class="how-step"><div class="how-num">2</div><h4>Pattern Recognition</h4><p>ML models identify income cycles, spending habits, recurring bills, and lifestyle patterns.</p></div>
+      <div class="how-step"><div class="how-num">3</div><h4>Insight Generation</h4><p>Personalised, plain-language insights generated daily and surfaced on your dashboard.</p></div>
+      <div class="how-step"><div class="how-num">4</div><h4>Smart Suggestions</h4><p>Recommendations, savings nudges, and financial alerts tailored to your life.</p></div>
+      <div class="how-step"><div class="how-num">5</div><h4>Continuous Learning</h4><p>The more you bank with Riva, the smarter the AI gets. Adapts to life changes.</p></div>
+    </div>
+  </div>
+  <div class="sec bg-white" style="padding-top:2rem;padding-bottom:2rem">
+    <div class="privacy-card">
+      <i class="fas fa-lock"></i>
+      <div>
+        <h4>Your Data Stays Yours</h4>
+        <p>Riva AI operates entirely within your account data. We never sell, share, or use your financial data for advertising. All AI models run on ISO 27001-certified, RBI-compliant infrastructure. You can turn off AI Insights anytime from your account settings.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════ -->
+<div class="page" id="pg-about">
+  <div class="sec bg-white">
+    <div class="about-grid">
+      <div>
+        <span class="sec-lbl">About Riva Bank</span>
+        <h2 class="sec-title">Built on mission.<br/>Grown on trust.</h2>
+        <p class="sec-sub" style="max-width:100%">Riva Bank was founded in 2019 to make quality banking accessible to every Indian. Today we serve 2 million+ customers across 18 states through 500+ branches and a fully digital platform.</p>
+        <div class="ceo-quote">
+          <blockquote>"We built Riva Bank to give every Indian the financial tools they deserve — simple, secure, and genuinely smart."</blockquote>
+          <div class="ceo-info"><div class="ceo-av">P</div><div><h5>Priyanka</h5><p>Founder &amp; CEO, Riva Bank</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="milestones">
+          <div class="milestone" onclick="openAbout('aum')"><h3>₹12,000 Cr+</h3><p>Assets Under Management</p></div>
+          <div class="milestone" onclick="openAbout('cust')"><h3>2M+</h3><p>Active Customers</p></div>
+          <div class="milestone" onclick="openAbout('branch')"><h3>500+</h3><p>Branches &amp; ATMs</p></div>
+          <div class="milestone" onclick="openAbout('states')"><h3>18</h3><p>States Covered</p></div>
+        </div>
+        <div class="awards-box">
+          <h5>Recognition</h5>
+          <div class="award-item" onclick="openAbout('award1')"><span>🏆</span> Best Digital Bank — NASSCOM Fintech Awards 2024</div>
+          <div class="award-item" onclick="openAbout('award2')"><span>⭐</span> Top 10 Neobanks — Inc42 Fintech50</div>
+          <div class="award-item" onclick="openAbout('award3')"><span>🎖️</span> Women Founder of the Year — ET NOW Awards 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sec bg-cream2" style="padding-top:2rem">
+    <div class="sec-hdr"><span class="sec-lbl">Compliance</span><h2 class="sec-title">Regulated. Protected. Transparent.</h2></div>
+    <div class="reg-grid">
+      <div class="reg-card" onclick="openReg('rbi')"><span class="reg-icon">🏛️</span><h4>RBI Licensed Bank</h4><p>Full commercial banking licence under the Banking Regulation Act, 1949.</p><span class="reg-badge-txt">Licence No. RBI/2024/RIVA-001</span></div>
+      <div class="reg-card" onclick="openReg('dicgc')"><span class="reg-icon">🛡️</span><h4>DICGC Insured</h4><p>All deposits insured up to ₹5,00,000 per depositor by the Government of India.</p><span class="reg-badge-txt">DICGC Member Bank</span></div>
+      <div class="reg-card" onclick="openReg('iso')"><span class="reg-icon">🔐</span><h4>ISO 27001 Certified</h4><p>Data security certified to ISO/IEC 27001:2022. AES-256 encryption at rest and in transit.</p><span class="reg-badge-txt">ISO/IEC 27001:2022</span></div>
+      <div class="reg-card" onclick="openReg('pci')"><span class="reg-icon">💳</span><h4>PCI DSS Compliant</h4><p>All payment systems meet PCI DSS Level 1 — the highest cardholder security standard.</p><span class="reg-badge-txt">PCI DSS Level 1</span></div>
+    </div>
+    <div class="reg-note" style="margin-top:1.5rem"><strong>Riva Bank Pvt. Ltd.</strong> is a Scheduled Commercial Bank regulated by the <strong>Reserve Bank of India</strong>. All products are subject to RBI guidelines and applicable Indian laws. Investments are subject to market risk. IRDAI Reg. No. CA0528.</div>
+  </div>
+</div>
+
+<!-- ═══ OPEN ACCOUNT ══════════════════════════════════ -->
+<div class="page" id="pg-account">
+  <div class="form-center bg-cream2">
+    <div style="text-align:center;margin-bottom:2rem"><span class="sec-lbl">Get Started</span><h2 class="sec-title">Open your account in minutes.</h2><p class="sec-sub" style="margin:0 auto">No branch visit. No paperwork. Just your PAN, Aadhaar, and 5 minutes.</p></div>
+    <div class="form-card">
+      <div class="step-bar">
+        <div class="s-num active-step" id="sn1">1</div>
+        <div class="s-line" id="sl1"></div>
+        <div class="s-num" id="sn2">2</div>
+      </div>
+      <div class="f-step is-active" id="fs1">
+        <div class="f-step-t">Your Details</div>
+        <div class="f-step-s">All information is encrypted and stored per RBI guidelines.</div>
+        <div class="f-row">
+          <div class="fg"><label>FIRST NAME</label><input id="inFn" placeholder="Priyanka"/><div class="f-err" id="errFn">Please enter your first name</div></div>
+          <div class="fg"><label>LAST NAME</label><input id="inLn" placeholder="Sharma"/><div class="f-err" id="errLn">Please enter your last name</div></div>
+        </div>
+        <div class="fg"><label>MOBILE NUMBER</label><input id="inMb" type="tel" placeholder="+91 98765 43210"/><div class="f-err" id="errMb">Enter a valid 10-digit number</div></div>
+        <div class="fg"><label>EMAIL ADDRESS</label><input id="inEm" type="email" placeholder="you@example.com"/><div class="f-err" id="errEm">Enter a valid email address</div></div>
+        <div class="fg"><label>PAN NUMBER</label><input id="inPn" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase"/><div class="f-err" id="errPn">Invalid PAN (format: ABCDE1234F)</div></div>
+        <div class="fg"><label>ACCOUNT TYPE</label>
+          <select id="inAt">
+            <option value="">Select account type</option>
+            <option>Savings Account</option>
+            <option>Current Account</option>
+            <option>NRI Account</option>
+            <option>Neo by Riva</option>
+          </select>
+          <div class="f-err" id="errAt">Please select an account type</div>
+        </div>
+        <div class="f-nav"><span style="font-size:.72rem;color:var(--muted)">Step 1 of 2</span><button class="btn-primary" onclick="submitForm()">Continue →</button></div>
+      </div>
+      <div class="f-step" id="fs2">
+        <div class="success-box">
+          <div class="s-ico">✅</div>
+          <h3>Application Received</h3>
+          <p>Our team will reach out within 24 hours for your video KYC. Please keep Aadhaar and PAN ready.</p>
+          <div class="ref-tag" id="refNum">REF # RIVA-00000</div>
+          <br/><br/>
+          <button class="btn-primary" onclick="resetForm()">Submit Another Application</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODALS ════════════════════════════════════════ -->
+<!-- Universal Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="mTitle">Title</h3>
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-view1" id="mView1">
+        <div id="mChip" style="margin-bottom:.9rem"></div>
+        <p id="mDesc"></p>
+        <div class="modal-section" id="mFeatSec"><h4>Key Features</h4><ul id="mFeats"></ul></div>
+        <div class="modal-elig" id="mElig" style="display:none"></div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap" id="mBtns">
+          <button class="btn-primary" style="flex:1" onclick="closeModal();goPage('account')">Apply Now</button>
+          <button class="btn-outline" style="flex:1" id="mChargesBtn" onclick="showCharges()">View Charges →</button>
+        </div>
+      </div>
+      <div class="modal-view2" id="mView2">
+        <h4 style="font-family:var(--font-d);font-size:1rem;color:var(--navy);margin-bottom:.7rem">Fees &amp; Charges</h4>
+        <div id="mCharges"></div>
+        <button class="btn-back" style="margin-top:1.2rem" onclick="hideCharges()">← Back to Features</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Neo Waitlist Modal -->
+<div class="modal-overlay" id="neoWaitModal">
+  <div class="modal-box" style="max-width:400px">
+    <div class="modal-head"><h3>Join Neo by Riva ✦</h3><button class="modal-close" onclick="document.getElementById('neoWaitModal').classList.remove('open')"><i class="fas fa-times"></i></button></div>
+    <div class="modal-body">
+      <p>Be among the first to experience India's most intelligent digital bank. Zero fees. 100% digital.</p>
+      <div id="neoFormWrap">
+        <div class="fg"><label>YOUR NAME</label><input id="neoN" placeholder="Priyanka Sharma"/></div>
+        <div class="fg"><label>MOBILE NUMBER</label><input id="neoM" type="tel" placeholder="+91 98765 43210"/></div>
+        <div class="fg"><label>CITY</label><input id="neoC" placeholder="Mumbai"/></div>
+        <button class="btn-sage" style="width:100%;margin-top:.4rem" onclick="submitNeo()">Join Waitlist →</button>
+      </div>
+      <div id="neoSuccess" style="display:none;text-align:center;padding:.5rem 0">
+        <div style="font-size:2.5rem;margin-bottom:.6rem">🎉</div>
+        <h4 style="font-family:var(--font-d);color:var(--navy);font-size:1.1rem;margin-bottom:.4rem">You're on the list!</h4>
+        <p>We'll notify you when Neo by Riva goes live.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── Nav height ────────────────────────────────────────
+function setNavHeight() {
+  var nav = document.getElementById('main-nav');
+  var h = nav ? nav.offsetHeight : 105;
+  document.documentElement.style.setProperty('--nav-h', h + 'px');
+}
+window.addEventListener('load', setNavHeight);
+window.addEventListener('resize', setNavHeight);
+
+// ── Mobile hamburger ──────────────────────────────────
+document.getElementById('hambBtn').addEventListener('click', function() {
+  var m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  setNavHeight();
+});
+
+// ── Page navigation ───────────────────────────────────
+var pageIds = ['home','products','services','calculator','rates','neo','ai','about','account'];
+
+function goPage(id) {
+  // Hide all pages
+  for (var i = 0; i < pageIds.length; i++) {
+    var pg = document.getElementById('pg-' + pageIds[i]);
+    if (pg) pg.classList.remove('is-active');
+  }
+  // Show target
+  var target = document.getElementById('pg-' + id);
+  if (target) {
+    target.classList.add('is-active');
+    window.scrollTo(0, 0);
+  }
+  // Update nav tabs
+  document.querySelectorAll('.nav-tab').forEach(function(t) {
+    t.classList.toggle('is-active', t.getAttribute('data-page') === id);
+  });
+  document.querySelectorAll('.mob-tab').forEach(function(t) {
+    t.classList.toggle('is-active', t.getAttribute('data-page') === id);
+  });
+  // Close mobile menu
+  document.getElementById('mobileMenu').classList.remove('open');
+  setNavHeight();
+}
+
+// Attach nav tab clicks
+document.querySelectorAll('.nav-tab, .mob-tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var page = this.getAttribute('data-page');
+    if (page) goPage(page);
+  });
+});
+
+// ── Pill tabs (Products) ──────────────────────────────
+document.querySelectorAll('.pill-tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var panel = this.getAttribute('data-panel');
+    document.querySelectorAll('.pill-tab').forEach(function(b) { b.classList.remove('is-active'); });
+    document.querySelectorAll('.pill-panel').forEach(function(p) { p.classList.remove('is-active'); });
+    this.classList.add('is-active');
+    var el = document.getElementById('pp-' + panel);
+    if (el) el.classList.add('is-active');
+  });
+});
+
+// ── Calculator tabs ───────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var calc = this.getAttribute('data-calc');
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('is-active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('is-active'); });
+    this.classList.add('is-active');
+    var el = document.getElementById('cp-' + calc);
+    if (el) el.classList.add('is-active');
+  });
+});
+
+// ── Rates tabs ────────────────────────────────────────
+document.querySelectorAll('.line-tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tab = this.getAttribute('data-rtab');
+    document.querySelectorAll('.line-tab').forEach(function(b) { b.classList.remove('is-active'); });
+    document.querySelectorAll('.line-panel').forEach(function(p) { p.classList.remove('is-active'); });
+    this.classList.add('is-active');
+    var el = document.getElementById('rp-' + tab);
+    if (el) el.classList.add('is-active');
+  });
+});
+
+// ── EMI Calculator ────────────────────────────────────
+function fmt(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+function calcEMI() {
+  var P = parseFloat(document.getElementById('sAmt').value);
+  var annRate = parseFloat(document.getElementById('sRate').value);
+  var yrs = parseFloat(document.getElementById('sTen').value);
+  var r = annRate / 12 / 100;
+  var n = yrs * 12;
+  var emi = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  var total = emi * n;
+  var interest = total - P;
+  var pPct = Math.round(P / total * 100);
+  var iPct = 100 - pPct;
+  var circ = 2 * Math.PI * 32;
+
+  document.getElementById('lAmt').textContent = fmt(P);
+  document.getElementById('lRate').textContent = annRate.toFixed(1) + '%';
+  document.getElementById('lTen').textContent = yrs + (yrs === 1 ? ' Year' : ' Years');
+  document.getElementById('rEmi').textContent = fmt(emi);
+  document.getElementById('rPrin').textContent = fmt(P);
+  document.getElementById('rInt').textContent = fmt(interest);
+  document.getElementById('rTot').textContent = fmt(total);
+
+  document.getElementById('dPrin').setAttribute('stroke-dasharray', (circ * pPct / 100) + ' ' + circ);
+  document.getElementById('dInt').setAttribute('stroke-dasharray', (circ * iPct / 100) + ' ' + circ);
+  document.getElementById('dInt').setAttribute('stroke-dashoffset', -(circ * pPct / 100));
+  document.getElementById('legP').textContent = pPct + '%';
+  document.getElementById('legI').textContent = iPct + '%';
+}
+document.getElementById('sAmt').addEventListener('input', calcEMI);
+document.getElementById('sRate').addEventListener('input', calcEMI);
+document.getElementById('sTen').addEventListener('input', calcEMI);
+calcEMI();
+
+// ── FD Calculator ─────────────────────────────────────
+function calcFD() {
+  var P = parseFloat(document.getElementById('fdP').value) || 0;
+  var rate = parseFloat(document.getElementById('fdR').value) || 0;
+  var t = parseFloat(document.getElementById('fdT').value) || 0;
+  var isYears = document.getElementById('fdTt').value === 'years';
+  var n = parseFloat(document.getElementById('fdF').value);
+  var years = isYears ? t : t / 12;
+  var mat = P * Math.pow(1 + (rate / 100) / n, n * years);
+  var interest = mat - P;
+  var ey = years > 0 ? ((mat / P - 1) / years * 100) : 0;
+
+  document.getElementById('fdMat').textContent = fmt(mat);
+  document.getElementById('fdVp').textContent = fmt(P);
+  document.getElementById('fdVi').textContent = fmt(interest);
+  document.getElementById('fdVy').textContent = ey.toFixed(2) + '% p.a.';
+}
+['fdP','fdR','fdT','fdTt','fdF'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input', calcFD);
+  document.getElementById(id).addEventListener('change', calcFD);
+});
+calcFD();
+
+// ── Modal ─────────────────────────────────────────────
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+function showCharges() {
+  document.getElementById('mView1').classList.add('hide');
+  document.getElementById('mView2').classList.add('show');
+}
+function hideCharges() {
+  document.getElementById('mView1').classList.remove('hide');
+  document.getElementById('mView2').classList.remove('show');
+}
+function openModal(title, chip, desc, feats, elig, charges, hasApply, hasCharges) {
+  document.getElementById('mTitle').textContent = title;
+  var chipEl = document.getElementById('mChip');
+  chipEl.innerHTML = chip ? '<span class="chip chip-gold">' + chip + '</span>' : '';
+  document.getElementById('mDesc').textContent = desc;
+  var ul = document.getElementById('mFeats');
+  ul.innerHTML = feats.map(function(f) { return '<li>' + f + '</li>'; }).join('');
+  var eligEl = document.getElementById('mElig');
+  if (elig) { eligEl.innerHTML = elig; eligEl.style.display = 'block'; } else { eligEl.style.display = 'none'; }
+  document.getElementById('mCharges').innerHTML = charges || '';
+  document.getElementById('mBtns').style.display = hasApply !== false ? 'flex' : 'none';
+  document.getElementById('mChargesBtn').style.display = hasCharges !== false ? '' : 'none';
+  document.getElementById('mView1').classList.remove('hide');
+  document.getElementById('mView2').classList.remove('show');
+  document.getElementById('modal').classList.add('open');
+}
+
+// ── Product data ──────────────────────────────────────
+var PRODS = {
+  savings: { title:'Riva Savings Account', chip:'Up to 7.2% p.a.', desc:'A zero-balance savings account that earns high interest and gives you complete control. Open instantly with video KYC — no branch, no paperwork.', feats:['Zero minimum balance — no penalty ever','Up to 7.2% p.a. on balances above ₹25 lakh','Unlimited free UPI and IMPS transfers','Instant virtual debit card on account opening','AI-powered spend insights via Riva AI Insights'], elig:'<strong>Eligibility:</strong> Indian resident, age 18+. Valid PAN and Aadhaar required.', charges:'<table class="charges-table"><tr><td>Account Opening</td><td>Free</td></tr><tr><td>Minimum Balance</td><td>₹0</td></tr><tr><td>ATM Withdrawals (Own)</td><td>Free</td></tr><tr><td>Debit Card (1st Year)</td><td>Free</td></tr><tr><td>Cheque Book (25 leaves/qtr)</td><td>Free</td></tr></table>' },
+  fd: { title:'Fixed Deposits', chip:'Up to 8.5% p.a.', desc:'Park your money safely and earn guaranteed returns. Riva FDs offer some of the most competitive rates with complete flexibility on tenure.', feats:['Start from just ₹500','Tenures from 7 days to 10 years','Senior citizens earn additional 0.50% p.a.','Quarterly or cumulative interest payout','Auto-renewal and premature withdrawal available'], elig:'<strong>Eligibility:</strong> Individuals, HUFs, companies. NRI FD available. PAN mandatory above ₹50,000.', charges:'<table class="charges-table"><tr><td>Premature Withdrawal Penalty</td><td>1% on rate</td></tr><tr><td>TDS on Interest</td><td>10% above ₹40,000/yr</td></tr></table>' },
+  homeloan: { title:'Riva Home Loan', chip:'From 8.40% p.a.', desc:'Make your home ownership dream a reality. Transparent rates, flexible tenures up to 30 years, and a fully digital application.', feats:['Loan from ₹5 lakh up to ₹10 crore','Up to 30 years tenure','Financing up to 90% of property value','Balance transfer with top-up loan available','Nil prepayment on floating rate loans'], elig:'<strong>Eligibility:</strong> Salaried or self-employed, age 21–65. Min. net income ₹25,000/month. CIBIL 700+.', charges:'<table class="charges-table"><tr><td>Processing Fee</td><td>0.50% (Max ₹10,000)</td></tr><tr><td>Prepayment (Floating)</td><td>Nil</td></tr><tr><td>Legal / Valuation</td><td>At actuals</td></tr></table>' },
+  ploan: { title:'Personal Loan', chip:'From 10.5% p.a.', desc:'Instant disbursal, minimal documentation, up to ₹40 lakh. For travel, medical, wedding, or home renovation.', feats:['₹50,000 to ₹40 lakh','Disbursal within 4 hours (pre-approved customers)','No collateral required','Flexible tenure: 12–60 months','No prepayment charges after 12 EMIs'], elig:'<strong>Eligibility:</strong> Salaried, age 21–58. Min. monthly salary ₹20,000. CIBIL 700+.', charges:'<table class="charges-table"><tr><td>Processing Fee</td><td>2% (Max ₹25,000)</td></tr><tr><td>Late Payment</td><td>2% per month on overdue</td></tr></table>' },
+  cc: { title:'Riva Credit Cards', chip:'Virtual Card on Signup', desc:'Choose Rewards, Cashback, or Travel. All cards issue a virtual card instantly on approval. Dynamic CVV, insurance included.', feats:['Riva Rewards — 5X points on dining & shopping','Riva Cashback — 2% cashback on all spends','Riva Travel — Lounge access + zero forex markup','Dynamic CVV refreshes every 24 hours','Air accident & purchase protection included'], elig:'<strong>Eligibility:</strong> Indian resident, age 21+. Annual income ₹3L+ (basic) / ₹6L+ (premium). CIBIL 700+.', charges:'<table class="charges-table"><tr><td>Annual Fee</td><td>₹0 (1st Year)</td></tr><tr><td>Finance Charges</td><td>3.5% per month</td></tr><tr><td>Cash Advance Fee</td><td>2.5% (Min ₹500)</td></tr></table>' },
+  carloan: { title:'Car Loan', chip:'From 8.75% p.a.', desc:'New or pre-owned vehicles, up to 100% on-road funding for eligible customers. Quick approval within 24 hours.', feats:['₹1 lakh to ₹1 crore','New and pre-owned (up to 5 years old)','Up to 100% on-road price funding','Flexible tenure: 1–7 years','Quick approval within 24 hours'], elig:'<strong>Eligibility:</strong> Salaried or self-employed, age 21–65. Min. income ₹15,000/month. CIBIL 650+.', charges:'<table class="charges-table"><tr><td>Processing Fee</td><td>₹3,000 – ₹5,000</td></tr></table>' },
+  current: { title:'Current Account', chip:'Business Banking', desc:'Designed for businesses, traders, and professionals. Higher transaction limits, dedicated RM, and cash deposit facilities.', feats:['No restrictions on transactions','Cash deposit at all branches','Dedicated Relationship Manager','Multi-city cheque collection','Business debit card with higher limits'], elig:'<strong>Eligibility:</strong> Proprietorship, partnership, LLP, private/public limited companies, trusts.', charges:'<table class="charges-table"><tr><td>Monthly Average Balance</td><td>₹10,000 – ₹50,000</td></tr><tr><td>Cash Deposit</td><td>Free (up to ₹2L/month)</td></tr></table>' },
+  nri: { title:'NRI Account', chip:'NRI Banking', desc:'Full-service NRI banking — NRE, NRO, and FCNR accounts with repatriation facility and dedicated NRI desk.', feats:['NRE Account: Fully repatriable, tax-free interest','NRO Account: For income earned in India','FCNR: Foreign currency deposits, no exchange risk','Dedicated NRI Desk and RM','Power of Attorney facility for family members'], elig:'<strong>Eligibility:</strong> Indian citizens residing abroad (NRI), Persons of Indian Origin (PIO), Overseas Citizens of India (OCI).', charges:'<table class="charges-table"><tr><td>Wire Transfer Inward</td><td>Free</td></tr></table>' },
+  mf: { title:'Mutual Funds', chip:'SEBI Registered', desc:'Access direct mutual fund plans directly through your Riva account. Zero commission, SIP from ₹500/month.', feats:['Direct plans — zero distributor commission','SIP, STP, SWP all available','Equity, debt, hybrid, and ELSS funds','Goal-based investing with AI tracking','Instant redemption on select liquid funds'], elig:'<strong>Eligibility:</strong> All Riva Bank account holders. KYC auto-completed for existing customers.', charges:'<table class="charges-table"><tr><td>Transaction Fee</td><td>Nil (Direct Plans)</td></tr></table>' },
+  insurance: { title:'Insurance Marketplace', chip:'IRDAI Approved', desc:'Compare and buy insurance from India\'s leading insurers — all within the Riva Bank app. No agent, no paperwork.', feats:['Term Life: Cover from ₹25L to ₹5 crore','Health Insurance: Family floater from ₹5L','Motor Insurance: Instant renewal online','Home Insurance: Structure + contents','Travel Insurance: Domestic and international'], elig:'<strong>Eligibility:</strong> All Riva Bank account holders. Medical underwriting may apply for life and health plans.', charges:'<table class="charges-table"><tr><td>Platform Fee</td><td>₹0 — premium goes to insurer</td></tr></table>' },
+  debit: { title:'Riva Debit Card', chip:'Free with Account', desc:'Your Riva Debit Card works everywhere — online, in-store, internationally. Contactless, dynamic CVV, UPI on-card.', feats:['Contactless NFC payments','Dynamic CVV refreshes every 24 hours','Accepted at 50 million+ merchants worldwide','UPI on-card for QR payments','Set daily limits from your app instantly'], elig:'<strong>Eligibility:</strong> Issued free with all Riva Savings and Current Accounts.', charges:'<table class="charges-table"><tr><td>Annual Fee</td><td>Free (1st Year)</td></tr><tr><td>International Usage</td><td>1.5% markup + GST</td></tr></table>' },
+  edloan: { title:'Education Loan', chip:'From 8.15% p.a.', desc:'Finance education at India\'s top institutions or abroad. Covers tuition, accommodation, and living expenses.', feats:['Up to ₹1.5 crore for abroad studies','Moratorium: Course duration + 1 year','Tax benefit under Section 80E','No collateral up to ₹7.5 lakh','Covers tuition, hostel, books, and living'], elig:'<strong>Eligibility:</strong> Student age 16+ with admission letter from recognised institution. Co-applicant required.', charges:'<table class="charges-table"><tr><td>Processing Fee</td><td>Nil</td></tr></table>' }
+};
+function openProd(key) {
+  var d = PRODS[key];
+  if (!d) return;
+  openModal(d.title, d.chip, d.desc, d.feats, d.elig, d.charges);
+}
+
+// ── Service data ──────────────────────────────────────
+var SVCS = {
+  netbanking: { title:'NetBanking & Mobile App', feats:['Account management & mini-statement','Fund transfers: UPI, NEFT, RTGS, IMPS','Bill payments: electricity, mobile, DTH, insurance','FD booking, loan EMI tracking, card management','Biometric login (Face ID, fingerprint)','128-bit SSL encrypted — bank-grade security'], desc:'Riva\'s mobile app (4.8★ on App Store & Play Store) gives you complete 24/7 control. Available on iOS and Android, or via browser at netbanking.rivabank.in.' },
+  upi: { title:'UPI & Instant Payments', feats:['UPI ID (@riva) linked to your account','Scan & Pay via QR code','Collect Money via payment link or phone number','IMPS: Cross-bank transfer 24/7','NEFT & RTGS for high-value transactions','UPI AutoPay for recurring mandates'], desc:'Send and receive money instantly across all banks using Riva\'s UPI. Available 24/7, 365 days, integrated with all major UPI apps.' },
+  forex: { title:'Forex & International Services', feats:['International wire transfer to 100+ countries','Forex Travel Card: Multi-currency, zero markup (Premium)','Currency exchange at all major branches','Remittance tracking in real time','RBI-compliant LRS (Liberalised Remittance Scheme)','Import / Export trade finance for businesses'], desc:'Send money abroad at competitive exchange rates, buy/sell foreign currency, or travel with our zero-markup forex card.' },
+  invest2: { title:'Investment Services', feats:['Direct mutual funds — zero commission','RBI Floating Rate Savings Bonds','IPO applications via ASBA','NSC, PPF, and Sukanya Samriddhi accounts','Portfolio tracking with AI insights','SEBI Reg. No. INA000XXXXX'], desc:'Access India\'s full investment ecosystem directly through Riva — mutual funds, bonds, IPOs, and more. SEBI-registered advisory.' },
+  insurance2: { title:'Insurance Marketplace', feats:['Term life insurance from ₹400/month','Health insurance: Individual and family floater','Motor insurance: 2-wheeler and 4-wheeler','Home insurance: Building + contents','Travel insurance: Domestic and international','All claims handled in-app — 24/7 claim assistance'], desc:'Compare and buy insurance from India\'s top insurers in under 5 minutes. No agent, no paperwork, instant issuance.' },
+  locker: { title:'Safe Deposit Lockers', feats:['500+ branches with locker facilities','Biometric entry with CCTV surveillance','Sizes: Small (₹1,500/yr), Medium (₹3,000/yr), Large (₹5,000/yr)','Insured up to ₹5 lakh against fire & theft','Nomination facility available','Access during banking hours + appointment-based after hours'], desc:'Secure your jewellery, documents, and valuables in tamper-proof lockers across 500+ branches nationwide.' }
+};
+function openSvc(key) {
+  var d = SVCS[key];
+  if (!d) return;
+  document.getElementById('mChargesBtn').style.display = 'none';
+  openModal(d.title, null, d.desc, d.feats, null, null, true, false);
+}
+
+// ── Rate row modal ────────────────────────────────────
+function openRate(title, rate, desc) {
+  openModal(title, rate, desc, [], null, null, true, false);
+  document.getElementById('mFeatSec').style.display = 'none';
+}
+// Override close to reset feat section
+var _origClose = closeModal;
+closeModal = function() {
+  document.getElementById('mFeatSec').style.display = 'block';
+  _origClose();
+};
+
+// ── Neo feature modals ────────────────────────────────
+var NEO_FEATS = {
+  instant: { title:'Instant Account Opening', body:'Open a fully functional bank account in under 5 minutes using Aadhaar-based Video KYC. No branch visit, no physical documents, no waiting period. Your virtual debit card is issued the moment your account is activated. Available 24/7 — even on bank holidays.', feats:['Aadhaar-based Video KYC — no documents to courier','Virtual debit card issued instantly on activation','Available 24/7 including weekends and holidays','Full-featured account from day one','Upgrade to full KYC at any Riva branch'] },
+  zero: { title:'Zero Fees Forever', body:'Neo by Riva charges nothing for account maintenance, minimum balance, UPI transfers, IMPS, online NEFT/RTGS, or debit card (first year). Our revenue comes from lending and investment products — not from nickel-and-diming our customers.', feats:['₹0 minimum balance — always','₹0 UPI and IMPS transfers','₹0 account opening or annual maintenance','₹0 debit card (first year)','Revenue model: lending & investments — not fees'] },
+  lang: { title:'12 Indian Languages', body:'Neo by Riva is fully available in Hindi, Tamil, Telugu, Kannada, Bengali, Marathi, Gujarati, Malayalam, Odia, Punjabi, Assamese, and English. Language-first banking for India\'s 1.4 billion — not just English speakers.', feats:['Full UI in 12 Indian languages','Customer support in 6 languages','Voice commands in Hindi and English','Language can be changed anytime in settings','New languages added based on customer demand'] },
+  rural: { title:'Works on 2G / Lite Mode', body:'Our Lite Mode reduces app data consumption by 80%. It works smoothly on 2G connections, making Neo by Riva accessible in rural and semi-urban India where high-speed internet is inconsistent.', feats:['Lite Mode: 80% less data consumption','Fully functional on 2G / 3G connections','Aadhaar eKYC without smartphone camera','Offline balance check via USSD *99#','400+ Riva branches as physical fallback'] },
+  smart: { title:'Smart Budget Pockets', body:'Divide your salary into up to 20 labelled pockets on payday. Pockets can be automatic — "Move ₹15,000 to Rent on the 1st of every month." Money in a pocket earns the same savings rate. Share a pocket with a family member for joint budgeting.', feats:['Up to 20 named pockets per account','Auto-transfer rules on custom triggers','Pocket-level spending reports','Shared pockets for couples/families','All pockets earn savings interest'] },
+  invest: { title:'Micro-Investing from ₹10', body:'Invest in curated ETF baskets — Nifty 50, Gold ETF, US Tech — starting from just ₹10. No demat account or broker needed. You own fractional units directly within your Neo account.', feats:['Start with as little as ₹10','No demat account or broker required','Nifty 50, Gold, US Tech, and more','SIP from ₹10/month with auto-invest','Portfolio tracked within the Neo app'] }
+};
+function openNeoFeat(key) {
+  var d = NEO_FEATS[key];
+  if (!d) return;
+  openModal(d.title, null, d.body, d.feats, null, null, false, false);
+}
+
+// ── India use case modals ─────────────────────────────
+var INDIA = {
+  gig: { title:'For Gig Workers & Freelancers', body:'India has 15 million+ gig workers — delivery riders, freelance designers, cab drivers, content creators — who earn irregularly and are often ignored by traditional banking.', feats:['Accept payments via UPI ID — no POS machine needed','Auto-categorise earnings by client or platform','Flexible pockets adapt to irregular income months','Salary advance on expected earnings','GST invoicing and payment tracking for freelancers'] },
+  student: { title:'For Students & First Jobbers', body:'For 30 million Indians entering the workforce every year, a first bank account should be the start of a financial journey — not a burden. Neo makes it effortless.', feats:['Zero balance — open on your first stipend day','Build CIBIL score with Neo Credit Builder from day one','Micro-invest from ₹10','Student-exclusive cashback on edu-platforms','Financial literacy content built into the app'] },
+  homemaker: { title:'For Homemakers', body:'India\'s homemakers manage ₹50,000–₹2,00,000+ in household budgets every month with no dedicated banking tool. Neo changes that.', feats:['Separate pockets for groceries, school fees, utilities','AI nudges: "You saved ₹800 on groceries this month"','Shared pockets with spouse for joint budgeting','Track EMIs, insurance premiums, and due dates','One-tap payment links to receive money from family'] },
+  rural: { title:'For Rural & Semi-Urban India', body:'Over 60% of India lives in tier-3 cities, towns, and villages. Neo by Riva works where others don\'t.', feats:['Available in 12 Indian languages','Works on 2G/3G with Lite Mode','Aadhaar eKYC — no camera needed for basic account','₹0 fees — no hidden charges that erode small balances','Backed by Riva Bank\'s 500+ branch network'] },
+  sme: { title:'For Small Business Owners', body:'India has 63 million MSMEs, most using personal accounts for business. Neo provides proper business banking in a smartphone app.', feats:['Neo Business Account: Separate from personal','Accept UPI payments with transaction history export','Generate GST-compliant invoices in-app','Track business expenses by category','Upgrade to Riva Business Current Account with one tap'] },
+  nri: { title:'For NRIs Sending Money Home', body:'India receives $100 billion+ in remittances annually. Neo makes it easy to send funds without branch visits or excessive charges.', feats:['Family receives funds directly into Neo account','Real-time exchange rate tracking with alerts','Automated remittance on a schedule','Instant credit — no 2–3 day SWIFT delays','Dedicated NRI support line in 6 languages'] }
+};
+function openIndiaCase(key) {
+  var d = INDIA[key];
+  if (!d) return;
+  openModal(d.title, null, d.body, d.feats, null, null, false, false);
+}
+
+// ── AI feature modals ─────────────────────────────────
+var AI_FEATS = {
+  overview: { title:'How Riva AI Insights Works', body:'Riva AI Insights uses machine learning to understand your financial patterns, predict your needs, and give you personalised, plain-language advice — all within your account boundary.', feats:['Your data analysed only within your account boundary','ML models identify income cycles and spending patterns','Insights generated daily on your dashboard','Privacy first: your data never leaves Riva\'s RBI-compliant infrastructure','Turn off AI Insights anytime from account settings'] },
+  spending: { title:'Smart Spend Analysis', body:'Every transaction — UPI, debit card, credit card, NEFT — is automatically categorised. You get a weekly and monthly dashboard showing exactly where your money goes.', feats:['Auto-categorises all transactions across payment methods','Flags unusual spikes: "You spent 40% more on food this week"','Compares to your own historical average','Downloadable PDF reports for tax records','Integrates investment income for a complete picture'] },
+  cashflow: { title:'Cash Flow Prediction', body:'Riva AI analyses your salary date, EMI due dates, recurring bills, and average variable spending to predict your account balance up to 30 days ahead.', feats:['Maps fixed obligations: rent, EMIs, insurance premiums','Estimates variable spend based on 6-month average','Predicts daily balance for each day of the month','Sends alert 7 days before a potential low-balance day','Suggests moving idle funds to FD near due dates'] },
+  savings: { title:'Savings Optimiser', body:'Riva AI calculates how much you can save each month without disrupting your lifestyle — and recommends the best product to put it in.', feats:['Calculates your "safe to save" amount after all commitments','Matches time horizon and risk appetite to products','Recommends FDs for short goals, MFs for long','Sets up Auto-Save rules with one tap','Tracks goal progress and adjusts as income changes'] },
+  credit: { title:'Credit Health Monitor', body:'Your CIBIL score directly affects loan eligibility and interest rate. Riva AI tracks your score in real time and tells you exactly what actions will improve it.', feats:['Live CIBIL score tracking — updated monthly','Alerts for hard inquiries on your credit report','Keeps credit utilisation below 30% automatically','Right time to apply for a new loan or card','Predicts loan eligibility before you apply'] },
+  nudge: { title:'Personalised Financial Nudges', body:'Smart, non-intrusive notifications that feel like advice from a knowledgeable friend — not a bank spam alert.', feats:['"Your SIP is due in 3 days — ensure sufficient balance"','"You\'ve spent 80% of your dining budget for the month"','"₹8,000 sitting idle — park in a 30-day FD?"','"Interest rates rising — great time for a 3-year FD"','"Credit card bill due in 5 days — full payment avoids interest"'] },
+  fraud: { title:'Anomaly & Fraud Detection', body:'Riva AI learns your transaction patterns and flags anything unusual — from new merchants to late-night transactions to amounts that deviate from your norm.', feats:['Learns your normal patterns over 30 days','Flags deviations: new merchant, unusual time, large amount','Real-time push notification for suspicious transactions','One-tap card freeze from the notification itself','All alerts reviewed by our security team within 2 hours'] }
+};
+function openAI(key) {
+  var d = AI_FEATS[key];
+  if (!d) return;
+  openModal(d.title, null, d.body, d.feats, null, null, true, false);
+}
+
+// ── About modals ──────────────────────────────────────
+var ABOUT = {
+  aum: { title:'₹12,000 Cr+ AUM', body:'Riva Bank manages over ₹12,000 crore in assets across savings deposits, fixed deposits, lending portfolios, and third-party investment products. Growing at 45% CAGR since our founding in 2019.' },
+  cust: { title:'2 Million+ Active Customers', body:'Riva Bank serves 2 million+ active account holders across 18 Indian states — from first-time account holders in tier-3 cities to HNI clients in metros.' },
+  branch: { title:'500+ Branches & ATMs', body:'Despite being digital-first, Riva Bank maintains 500+ branches and ATMs across 18 states. Our branches are designed as service hubs focused on KYC verification, loan counselling, and locker services.' },
+  states: { title:'18 States Covered', body:'Riva Bank operates across 18 states, with deliberate expansion into tier-2 and tier-3 cities. Goal: 22 states by 2026 with focus on eastern and central India.' },
+  award1: { title:'NASSCOM Fintech Awards 2024', body:'Riva Bank was named Best Digital Bank at the NASSCOM Fintech Awards 2024, highlighting our AI Insights platform, Neo by Riva, and measurable impact on financial inclusion.' },
+  award2: { title:'Inc42 Fintech50', body:'Inc42 Media named Riva Bank among India\'s top 10 neobanks for 2024, citing our unique combination of RBI banking licence, AI-powered features, and accessible pricing.' },
+  award3: { title:'Women Founder of the Year — ET NOW 2024', body:'Priyanka, Founder and CEO of Riva Bank, was named Women Founder of the Year at the ET NOW Awards 2024, recognising her journey of building India\'s first AI-native scheduled commercial bank.' }
+};
+function openAbout(key) {
+  var d = ABOUT[key];
+  if (!d) return;
+  openModal(d.title, null, d.body, [], null, null, false, false);
+}
+
+// ── Regulation modals ─────────────────────────────────
+var REGS = {
+  rbi: { title:'RBI Licensed Bank', body:'Riva Bank Pvt. Ltd. holds a full Scheduled Commercial Banking Licence issued by the Reserve Bank of India under the Banking Regulation Act, 1949 (Licence No. RBI/2024/RIVA-001). We submit periodic returns to RBI, maintain SLR and CRR as prescribed, and are subject to RBI inspection. Our balance sheet is audited by a Big-4 firm and published annually.' },
+  dicgc: { title:'DICGC Insurance', body:'All deposits at Riva Bank are insured under the DICGC scheme up to ₹5,00,000 (five lakh rupees) per depositor. This means each depositor receives up to ₹5 lakh back, guaranteed by the Government of India. Coverage applies to savings, fixed, recurring, and current accounts.' },
+  iso: { title:'ISO 27001 Certification', body:'Riva Bank\'s information security management system is certified to ISO/IEC 27001:2022. All customer data is encrypted using AES-256 at rest and TLS 1.3 in transit. We conduct bi-annual penetration testing and continuous vulnerability assessments.' },
+  pci: { title:'PCI DSS Level 1', body:'All card processing infrastructure at Riva Bank is certified to PCI DSS Level 1 — the highest tier of the Payment Card Industry Data Security Standard. This requires an annual on-site audit by a Qualified Security Assessor (QSA) and quarterly network scans.' }
+};
+function openReg(key) {
+  var d = REGS[key];
+  if (!d) return;
+  openModal(d.title, null, d.body, [], null, null, false, false);
+}
+
+// ── Neo Waitlist ──────────────────────────────────────
+function openNeoWaitlist() {
+  document.getElementById('neoFormWrap').style.display = 'block';
+  document.getElementById('neoSuccess').style.display = 'none';
+  document.getElementById('neoN').value = '';
+  document.getElementById('neoM').value = '';
+  document.getElementById('neoC').value = '';
+  document.getElementById('neoWaitModal').classList.add('open');
+}
+document.getElementById('neoWaitModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+function submitNeo() {
+  var n = document.getElementById('neoN').value.trim();
+  var m = document.getElementById('neoM').value.trim();
+  if (!n || !m) { alert('Please fill in your name and mobile number.'); return; }
+  document.getElementById('neoFormWrap').style.display = 'none';
+  document.getElementById('neoSuccess').style.display = 'block';
+}
+
+// ── Account Form ──────────────────────────────────────
+function showErr(id, show) {
+  document.getElementById(id).style.display = show ? 'block' : 'none';
+}
+function submitForm() {
+  var fn = document.getElementById('inFn').value.trim();
+  var ln = document.getElementById('inLn').value.trim();
+  var mb = document.getElementById('inMb').value.replace(/\D/g,'');
+  var em = document.getElementById('inEm').value.trim();
+  var pn = document.getElementById('inPn').value.trim().toUpperCase();
+  var at = document.getElementById('inAt').value;
+  var ok = true;
+
+  showErr('errFn', !fn); if (!fn) ok = false;
+  showErr('errLn', !ln); if (!ln) ok = false;
+  showErr('errMb', mb.length < 10); if (mb.length < 10) ok = false;
+  showErr('errEm', !/\S+@\S+\.\S+/.test(em)); if (!/\S+@\S+\.\S+/.test(em)) ok = false;
+  showErr('errPn', !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pn)); if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pn)) ok = false;
+  showErr('errAt', !at); if (!at) ok = false;
+
+  if (!ok) return;
+
+  document.getElementById('refNum').textContent = 'REF # RIVA-' + Math.floor(10000 + Math.random() * 90000);
+  document.getElementById('sn1').className = 's-num done-step';
+  document.getElementById('sl1').className = 's-line done-step';
+  document.getElementById('sn2').className = 's-num active-step';
+  document.getElementById('fs1').classList.remove('is-active');
+  document.getElementById('fs2').classList.add('is-active');
+  setNavHeight();
+}
+function resetForm() {
+  ['inFn','inLn','inMb','inEm','inPn'].forEach(function(id) { document.getElementById(id).value = ''; });
+  document.getElementById('inAt').value = '';
+  ['errFn','errLn','errMb','errEm','errPn','errAt'].forEach(function(id) { document.getElementById(id).style.display = 'none'; });
+  document.getElementById('sn1').className = 's-num active-step';
+  document.getElementById('sl1').className = 's-line';
+  document.getElementById('sn2').className = 's-num';
+  document.getElementById('fs2').classList.remove('is-active');
+  document.getElementById('fs1').classList.add('is-active');
+  setNavHeight();
+}
+</script>
+</body>
+</html>
